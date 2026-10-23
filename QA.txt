@@ -1,0 +1,127 @@
+Which operational unit has the best TAT performance?
+Which provider has the highest appeal volume and what is its overturn rate?
+Which plan sponsor has high appeal volume but also a high overturn rate?
+What are the top 5 provider specialties contributing to overturned appeals?
+For In-Network providers, what percentage of appeals were overturned?
+Which business unit has the highest pending workload?
+Show me the top 10 providers by appeal count and their determination breakdown.
+Which sponsor has the highest number of appeals and how are those appeals being determined?
+Identify providers with more than 50 appeals and an overturn rate above 50%.
+Which specialties have both high appeal volume and high overturn rates?
+Give me the key insights from the appeals data.
+What are the biggest risk areas based on appeal determinations?
+What actions would you recommend for providers with high overturn rates?
+Which provider type should management focus on based on appeal volume and overturn rate?
+Are there any unusual trends in the appeal data?
+Show the monthly upheld vs overturned trend.
+What is the average appeal TAT for the last 12 months?
+Which providers have shown an increase in TAT during the last 3 months?
+
+
+Which plan sponsors have the lowest compliance rate?
+Compare compliant vs non-compliant appeals by determination.
+How many appeals were received each month?
+Show the monthly upheld vs overturned trend.
+Compare In-Network vs Out-of-Network appeals.
+Which plan sponsors contribute the most appeals?
+Which providers have the highest overturn rate?
+
+
+1. How many total appeals do we have?
+2. What is the current status breakdown?
+3. What is the overall overturn rate?
+4. Which providers have the highest appeal volume?
+5. Which providers have the highest overturn rate?
+6. Which plan sponsors contribute the most appeals?
+7. Show the monthly appeal trend.
+8. Compare In-Network vs Out-of-Network appeals.
+9. Which specialties have the highest overturn rate?
+10. Give me the top 5 business insights and recommended actions.
+
+
+6. Time-Based Questions
+How many appeals were received each month?
+Show the monthly appeal trend.
+Which month had the highest number of appeals?
+Which month had the highest number of overturned appeals?
+Show the monthly upheld vs overturned trend.
+How has appeal volume changed over time?
+What is the average number of appeals received per month?
+Compare appeal volume between 2024 and 2025.
+7. Compliance Analysis
+How many appeals were closed in compliance?
+What is the compliance rate?
+Show compliance rate by provider type.
+Which plan sponsors have the lowest compliance rate?
+Which business units have the highest compliance rate?
+Compare compliant vs non-compliant appeals by determination.
+8. Advanced Conversational BI Questions
+
+
+
+
+
+
+Overall TAT Analysis
+
+Show the monthly trend of average TAT.
+Has appeal TAT improved or worsened compared to the previous month?
+Which month had the highest average TAT?
+Which month had the lowest average TAT?
+What is the median TAT across all appeals?
+Show TAT distribution by month.
+Provider Analysis
+Which providers have the highest average TAT?
+
+Top 10 providers by highest appeal TAT.
+Compare TAT of Provider A vs Provider B.
+Show providers with TAT greater than 30 days.
+Which providers consistently miss TAT targets?
+Operational Unit Analysis
+Compare TAT across operational units.
+Which operational unit has the best TAT performance?
+Which operational unit contributes most to delayed appeals?
+Show monthly TAT trend by operational unit.
+Rank operational units by average TAT.
+Appeal Type Analysis
+Which appeal types have the longest TAT?
+Compare TAT between Clinical and Administrative appeals.
+Show TAT by appeal category.
+Which appeal category is driving TAT increases?
+Timeliness & SLA
+What percentage of appeals met the SLA?
+How many appeals exceeded the SLA threshold?
+Show SLA compliance trend over time.
+Which providers have the lowest SLA compliance?
+Which operational units have the highest SLA compliance?
+Root Cause Analysis
+Why did TAT increase last month?
+Identify the top drivers of high appeal TAT.
+Which appeal categories contribute most to delays?
+Are certain providers causing longer processing times?
+What is the impact of appeal volume on TAT?
+Predictive Questions
+Forecast appeal TAT for the next 3 months.
+Predict which providers are likely to miss TAT targets next month.
+Forecast SLA compliance for the next quarter.
+Identify providers at risk of increasing TAT.
+Cohort Analysis
+Compare TAT for new vs existing providers.
+How does TAT vary by provider cohort?
+Show quarterly cohort analysis of TAT.
+Which provider cohorts show worsening TAT trends?
+Executive-Level Questions
+Provide a summary of TAT performance this quarter.
+What are the top 5 TAT improvement opportunities?
+Which operational units require immediate attention due to high TAT?
+Show a dashboard of TAT KPIs.
+Generate an executive summary of appeal TAT trends.
+Advanced Questions for LLM Testing
+Show providers whose TAT increased by more than 20% compared to the previous month.
+Find operational units where TAT is increasing while appeal volume is decreasing.
+Identify anomalies in appeal TAT over the past year.
+Which providers have both high overturn rates and high TAT?
+Show correlation between appeal volume and TAT.
+Explain the main reasons behind TAT deterioration in the last quarter.
+Identify the provider with the most significant improvement in TAT over the last 6 months.
+Compare current quarter TAT against the previous four quarters.

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1710" width="1200" height="1710" preserveAspectRatio="xMidYMin meet" style="font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <title>DataTalk.AI DataFlow Diagram</title>
+  <defs>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"/></marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7C3AED"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#DC2626"/></marker>
+    <marker id="arrowSlate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748B"/></marker>
+  </defs>
+  <rect width="1200" height="1710" fill="#F8FAFC"/>
+  <text x="600" y="42" text-anchor="middle" font-size="25" font-weight="800" fill="#0F172A" letter-spacing="-0.4">DataTalk.AI DataFlow Diagram</text>
+  <text x="600" y="65" text-anchor="middle" font-size="14" font-weight="500" fill="#475569">How a plain-English question becomes a verified, data-backed answer</text>
+  <g transform="translate(120, 80)">
+    <rect x="0" y="0" width="124" height="24" rx="12" fill="#F5F3FF" stroke="#DDD6FE"/><circle cx="14" cy="12" r="4" fill="#7C3AED"/><text x="26" y="16" font-size="11" font-weight="600" fill="#5B21B6">AI Reasoning</text>
+    <rect x="134" y="0" width="159" height="24" rx="12" fill="#ECFDF5" stroke="#A7F3D0"/><circle cx="148" cy="12" r="4" fill="#059669"/><text x="160" y="16" font-size="11" font-weight="600" fill="#065F46">Safety Guardrails</text>
+    <rect x="303" y="0" width="145" height="24" rx="12" fill="#EFF6FF" stroke="#BFDBFE"/><circle cx="317" cy="12" r="4" fill="#2563EB"/><text x="329" y="16" font-size="11" font-weight="600" fill="#1E40AF">Live Data Layer</text>
+    <rect x="458" y="0" width="131" height="24" rx="12" fill="#FFFBEB" stroke="#FDE68A"/><circle cx="472" cy="12" r="4" fill="#D97706"/><text x="484" y="16" font-size="11" font-weight="600" fill="#92400E">Orchestration</text>
+    <rect x="599" y="0" width="145" height="24" rx="12" fill="#FEF2F2" stroke="#FECACA"/><circle cx="613" cy="12" r="4" fill="#DC2626"/><text x="625" y="16" font-size="11" font-weight="600" fill="#991B1B">Safety Fallback</text>
+    <rect x="754" y="0" width="173" height="24" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/><circle cx="768" cy="12" r="4" fill="#475569"/><text x="780" y="16" font-size="11" font-weight="600" fill="#334155">Deterministic Logic</text>
+  </g>
+  <g transform="translate(405, 124)" filter="url(#boxShadow)"><rect width="390" height="64" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><circle cx="32" cy="32" r="15" fill="#F1F5F9"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="800" fill="#475569">?</text><text x="58" y="28" font-size="13.5" font-weight="800" fill="#0F172A">User Question</text><text x="58" y="46" font-size="12" fill="#64748B">Typed, or spoken and reviewed before sending</text></g>
+  <line x1="600" y1="188" x2="600" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 220)" filter="url(#boxShadow)">
+    <rect width="540" height="84" rx="14" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#78350F">Supervisor Agent · Request Routing</text>
+    <rect x="455.2" y="15" width="66.80000000000001" height="22" rx="11" fill="#FFFFFF" stroke="#FDE68A"/><text x="488.6" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#B45309">Routing</text>
+    <text x="16" y="46" font-size="11.5" fill="#92400E">Validates input (3–2,000 characters) and routes the request.</text>
+    <text x="16" y="62" font-size="11.5" fill="#92400E">Quick-action keywords go to deterministic analytics; open questions go to AI.</text>
+  </g>
+  <g transform="translate(56, 222)" filter="url(#boxShadow)">
+    <rect width="224" height="80" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Input Notice</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">Empty or over-long input</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">gets a guidance message.</text>
+  </g>
+  <line x1="330" y1="262" x2="284" y2="262" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <g transform="translate(932, 222)" filter="url(#boxShadow)">
+    <rect width="212" height="80" rx="14" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#0F172A">Quick Actions</text>
+    <text x="16" y="46" font-size="11.5" fill="#475569">Forecast, anomalies, overdue,</text>
+    <text x="16" y="62" font-size="11.5" fill="#475569">comparisons · instant results</text>
+  </g>
+  <line x1="870" y1="262" x2="928" y2="262" stroke="#64748B" stroke-width="1.8" marker-end="url(#arrowSlate)"/>
+  <line x1="600" y1="304" x2="600" y2="370" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <text x="612" y="338" text-anchor="start" font-size="10.5" font-weight="700" fill="#475569">open question</text>
+  <rect x="36" y="346" width="1128" height="1058" rx="20" fill="#FFFFFF" fill-opacity="0.6" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="58" y="368" font-size="11.5" font-weight="800" fill="#64748B" letter-spacing="0.8">ANALYTICS REASONING AGENT · AI PIPELINE</text>
+  <g transform="translate(330, 376)" filter="url(#boxShadow)">
+    <rect width="540" height="84" rx="14" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#D97706"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#78350F">Context Grounding</text>
+    <rect x="410.4" y="15" width="111.60000000000001" height="22" rx="11" fill="#FFFFFF" stroke="#FDE68A"/><text x="466.2" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#B45309">Schema + Rules</text>
+    <text x="48" y="58" font-size="12.5" fill="#92400E">Every AI step receives the approved schema, agreed metric</text>
+    <text x="48" y="78" font-size="12.5" fill="#92400E">definitions and real data values; the planner also sees recent chat.</text>
+  </g>
+  <line x1="600" y1="460" x2="600" y2="480" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 484)" filter="url(#boxShadow)">
+    <rect width="540" height="124" rx="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#7C3AED"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#2E1065">Planner Agent</text>
+    <rect x="384.8" y="15" width="137.2" height="22" rx="11" fill="#FFFFFF" stroke="#DDD6FE"/><text x="453.4" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6D28D9">Understands Intent</text>
+    <text x="48" y="58" font-size="12.5" fill="#4C1D95">• Splits the message into up to 5 sub-questions</text>
+    <text x="48" y="78" font-size="12.5" fill="#4C1D95">• Identifies metrics, filters, groupings and dependencies</text>
+    <rect x="24" y="84" width="492" height="28" rx="8" fill="#FFFFFF" stroke="#DDD6FE"/><text x="270.0" y="103" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6D28D9">Output: a checked, structured plan of sub-questions</text>
+  </g>
+  <g transform="translate(56, 500)" filter="url(#boxShadow)">
+    <rect width="224" height="92" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Rule-Based Split</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">Used if the planner fails</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">or under-splits (?, ;, lists,</text>
+    <text x="16" y="78" font-size="11.5" fill="#B91C1C">'and also').</text>
+  </g>
+  <line x1="330" y1="530" x2="284" y2="530" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <line x1="282" y1="566" x2="326" y2="566" stroke="#7C3AED" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+  <g transform="translate(932, 504)" filter="url(#boxShadow)">
+    <rect width="212" height="84" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Off-Topic Notice</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">Question not about the</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">Appeals data: guidance</text>
+    <text x="16" y="78" font-size="11.5" fill="#B91C1C">message, no SQL is run.</text>
+  </g>
+  <line x1="870" y1="546" x2="928" y2="546" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <line x1="600" y1="608" x2="600" y2="668" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <rect x="48" y="628" width="1104" height="642" rx="16" fill="#FAF5FF" fill-opacity="0.35" stroke="#DDD6FE" stroke-width="1.3" stroke-dasharray="4 4"/>
+  <text x="64" y="650" font-size="11" font-weight="800" fill="#6D28D9" letter-spacing="0.6">FOR EACH SUB-QUESTION · dependent sub-questions run last and receive upstream results</text>
+  <g transform="translate(330, 672)" filter="url(#boxShadow)">
+    <rect width="540" height="88" rx="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#7C3AED"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#2E1065">SQL Agent</text>
+    <rect x="423.2" y="15" width="98.80000000000001" height="22" rx="11" fill="#FFFFFF" stroke="#DDD6FE"/><text x="472.6" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6D28D9">Builds Query</text>
+    <text x="48" y="58" font-size="12.5" fill="#4C1D95">Turns each sub-question into one read-only database query</text>
+    <text x="48" y="78" font-size="12.5" fill="#4C1D95">using the agreed metric definitions.</text>
+  </g>
+  <line x1="600" y1="760" x2="600" y2="784" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 788)" filter="url(#boxShadow)">
+    <rect width="540" height="136" rx="14" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#059669"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">4</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#064E3B">Safety &amp; Policy Guardrails</text>
+    <rect x="391.2" y="15" width="130.8" height="22" rx="11" fill="#FFFFFF" stroke="#A7F3D0"/><text x="456.6" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#047857">SQL Safety Checks</text>
+  </g>
+  <text x="362" y="852" font-size="12.5" font-weight="600" fill="#065F46">✓ Strict Read-Only Access</text><text x="628" y="852" font-size="12.5" font-weight="600" fill="#065F46">✓ Approved Table &amp; Columns Only</text>
+  <text x="362" y="876" font-size="12.5" font-weight="600" fill="#065F46">✓ Blocks Writes, Drops &amp; Comments</text><text x="628" y="876" font-size="12.5" font-weight="600" fill="#065F46">✓ Validates SQL Syntax (AST)</text>
+  <text x="362" y="900" font-size="12.5" font-weight="600" fill="#065F46">✓ Single-Statement Only</text><text x="628" y="900" font-size="12.5" font-weight="600" fill="#065F46">✓ Enforces Safe Row Limits</text>
+  <g transform="translate(56, 796)" filter="url(#boxShadow)">
+    <rect width="224" height="104" rx="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#2E1065">Self-Healing Repair</text>
+    <text x="16" y="46" font-size="11.5" fill="#4C1D95">AI fixes only the reported</text>
+    <text x="16" y="62" font-size="11.5" fill="#4C1D95">problems, then the query</text>
+    <text x="16" y="78" font-size="11.5" fill="#4C1D95">is checked again (once).</text>
+  </g>
+  <line x1="330" y1="836" x2="284" y2="836" stroke="#7C3AED" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+  <line x1="282" y1="876" x2="326" y2="876" stroke="#7C3AED" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
+  <text x="306" y="828" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7C3AED">rejected</text>
+  <text x="306" y="892" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7C3AED">re-check</text>
+  <g transform="translate(932, 816)" filter="url(#boxShadow)">
+    <rect width="212" height="84" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Unsafe Query Blocked</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">Still invalid after repair:</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">sub-question reported as</text>
+    <text x="16" y="78" font-size="11.5" fill="#B91C1C">not answered.</text>
+  </g>
+  <line x1="870" y1="858" x2="928" y2="858" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <line x1="600" y1="924" x2="600" y2="948" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 952)" filter="url(#boxShadow)">
+    <rect width="540" height="80" rx="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#2563EB"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">5</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#1E3A8A">Live Database Execution</text>
+    <rect x="442.4" y="15" width="79.6" height="22" rx="11" fill="#FFFFFF" stroke="#BFDBFE"/><text x="482.2" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1D4ED8">Live Data</text>
+    <text x="48" y="58" font-size="12.5" fill="#1E40AF">Runs validated SQL on Databricks (max 5,000 rows).</text>
+  </g>
+  <g transform="translate(932, 950)" filter="url(#boxShadow)">
+    <rect width="212" height="84" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Graceful Recovery</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">No rows or a query error:</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">explains why and suggests</text>
+    <text x="16" y="78" font-size="11.5" fill="#B91C1C">checking names and dates.</text>
+  </g>
+  <line x1="870" y1="992" x2="928" y2="992" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <line x1="600" y1="1032" x2="600" y2="1056" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 1060)" filter="url(#boxShadow)">
+    <rect width="540" height="196" rx="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/><circle cx="28" cy="28" r="10" fill="#7C3AED"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">6</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#2E1065">Insight &amp; Chart Synthesis</text>
+    <rect x="388" y="15" width="134" height="22" rx="11" fill="#FFFFFF" stroke="#DDD6FE"/><text x="455" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6D28D9">Explains Results</text>
+    <rect x="18" y="50" width="156" height="80" rx="10" fill="#FFFFFF" stroke="#E9D5FF"/><text x="96" y="74" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4C1D95">Key Finding</text><text x="96" y="94" text-anchor="middle" font-size="11" fill="#64748B">Facts computed by code,</text><text x="96" y="110" text-anchor="middle" font-size="11" fill="#64748B">worded clearly by AI</text>
+    <rect x="192" y="50" width="156" height="80" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/><text x="270" y="74" text-anchor="middle" font-size="12.5" font-weight="800" fill="#334155">Auto-Chart Engine</text><text x="270" y="94" text-anchor="middle" font-size="11" fill="#64748B">Rule-based chart choice</text><text x="270" y="110" text-anchor="middle" font-size="11" fill="#64748B">values reconciled to data</text>
+    <rect x="366" y="50" width="156" height="80" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/><text x="444" y="74" text-anchor="middle" font-size="12.5" font-weight="800" fill="#334155">Recommended Actions</text><text x="444" y="94" text-anchor="middle" font-size="11" fill="#64748B">Owner · timeframe ·</text><text x="444" y="110" text-anchor="middle" font-size="11" fill="#64748B">success measure</text>
+    <rect x="18" y="142" width="504" height="40" rx="8" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="270" y="159" text-anchor="middle" font-size="11.5" font-weight="700" fill="#065F46">✓ Evidence Check: AI sentences with unverified numbers or causal claims</text>
+    <text x="270" y="174" text-anchor="middle" font-size="11.5" font-weight="700" fill="#065F46">are removed and replaced by the data-grounded version</text>
+  </g>
+  <line x1="600" y1="1256" x2="600" y2="1290" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 1294)" filter="url(#boxShadow)">
+    <rect width="540" height="96" rx="14" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#7C3AED"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">7</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#2E1065">Response Agent</text>
+    <rect x="410.4" y="15" width="111.60000000000001" height="22" rx="11" fill="#FFFFFF" stroke="#DDD6FE"/><text x="466.2" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6D28D9">Quality Review</text>
+    <text x="48" y="58" font-size="12.5" fill="#4C1D95">Multi-part questions only: combines sub-answers and runs a</text>
+    <text x="48" y="78" font-size="12.5" fill="#4C1D95">QA review for gaps or unsupported claims. Single questions skip it.</text>
+  </g>
+  <g transform="translate(56, 1294)" filter="url(#boxShadow)">
+    <rect width="224" height="96" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+    <text x="16" y="26" font-size="13" font-weight="800" fill="#991B1B">Direct-SQL Fallback</text>
+    <text x="16" y="46" font-size="11.5" fill="#B91C1C">If the pipeline fails:</text>
+    <text x="16" y="62" font-size="11.5" fill="#B91C1C">SQL agent → guardrails →</text>
+    <text x="16" y="78" font-size="11.5" fill="#B91C1C">execute → insight.</text>
+  </g>
+  <line x1="600" y1="1390" x2="600" y2="1424" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <g transform="translate(330, 1428)" filter="url(#boxShadow)">
+    <rect width="540" height="86" rx="14" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="10" fill="#D97706"/><text x="28" y="32" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">8</text>
+    <text x="48" y="32" font-size="15" font-weight="800" fill="#78350F">Response-First Delivery</text>
+    <text x="48" y="58" font-size="12.5" fill="#92400E">Answer first, then charts, insight panel, and the exact query.</text>
+  </g>
+  <text x="378" y="1504" font-size="11.5" font-weight="600" fill="#B45309">Unanswered sub-questions are listed explicitly.</text>
+  <path d="M1144 546 H1172 V1450 H874" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowRed)"/>
+  <line x1="1144" y1="858" x2="1172" y2="858" stroke="#DC2626" stroke-width="1.8"/>
+  <line x1="1144" y1="992" x2="1172" y2="992" stroke="#DC2626" stroke-width="1.8"/>
+  <path d="M1144 262 H1188 V1478 H874" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowSlate)"/>
+  <text x="1180" y="1494" text-anchor="end" font-size="10.5" font-weight="700" fill="#64748B">quick-action result</text>
+  <path d="M168 1390 V1464 H326" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowRed)"/>
+  <rect x="36" y="1534" width="1128" height="38" rx="10" fill="#F5F3FF" stroke="#DDD6FE"/>
+  <text x="600" y="1558" text-anchor="middle" font-size="12" font-weight="700" fill="#5B21B6">Consistent AI: same settings every time · every AI reply is format-checked and retried if invalid · if a step still fails, its backup takes over</text>
+  <text x="600" y="1600" text-anchor="middle" font-size="11.5" font-weight="800" fill="#64748B" letter-spacing="0.8">OUTPUT DELIVERABLES</text>
+  <g transform="translate(36, 1614)" filter="url(#boxShadow)"><rect width="212" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><text x="20" y="30" font-size="13" font-weight="800" fill="#0F172A">AI Answer First</text><text x="20" y="50" font-size="11.5" fill="#64748B">Key finding in plain English</text></g>
+  <g transform="translate(265, 1614)" filter="url(#boxShadow)"><rect width="212" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><text x="20" y="30" font-size="13" font-weight="800" fill="#0F172A">Interactive Chart</text><text x="20" y="50" font-size="11.5" fill="#64748B">Reconciled visual breakdown</text></g>
+  <g transform="translate(494, 1614)" filter="url(#boxShadow)"><rect width="212" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><text x="20" y="30" font-size="13" font-weight="800" fill="#0F172A">Data Table</text><text x="20" y="50" font-size="11.5" fill="#64748B">Inspectable result records</text></g>
+  <g transform="translate(723, 1614)" filter="url(#boxShadow)"><rect width="212" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><text x="20" y="30" font-size="13" font-weight="800" fill="#0F172A">SQL Audit Trail</text><text x="20" y="50" font-size="11.5" fill="#64748B">Validated query details</text></g>
+  <g transform="translate(952, 1614)" filter="url(#boxShadow)"><rect width="212" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/><text x="20" y="30" font-size="13" font-weight="800" fill="#0F172A">Outlook Draft</text><text x="20" y="50" font-size="11.5" fill="#64748B">Pre-filled email, never auto-sent</text></g>
+  <line x1="600" y1="1514" x2="600" y2="1530" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+</svg>

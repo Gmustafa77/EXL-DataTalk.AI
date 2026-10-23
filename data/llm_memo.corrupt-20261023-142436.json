@@ -1,0 +1,1021 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-23T08:32:18+00:00",
+  "entries": [
+    {
+      "question": "Which operational unit has the best TAT performance?",
+      "normalized_question": "which operational unit has the best tat performance",
+      "created_at": "2026-10-23T08:32:18+00:00",
+      "as_of_date": "2026-10-23",
+      "time_relative": false,
+      "model": "openai/gpt-oss-20b",
+      "prompt_version": "2026.10.20-refactor.1",
+      "answer": {
+        "text": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+        "route": "analytics_engine",
+        "table": {
+          "columns": [
+            "Current Unit Name",
+            "Avg Turnaround Days"
+          ],
+          "dtypes": {
+            "Current Unit Name": "str",
+            "Avg Turnaround Days": "float64"
+          },
+          "data": [
+            [
+              "MEDICAL MEMBER - SAG - FULLY INSURED",
+              13.93
+            ]
+          ]
+        },
+        "figures": [
+          {
+            "data": [
+              {
+                "mode": "number",
+                "number": {
+                  "valueformat": ",.2f"
+                },
+                "title": {
+                  "text": "Avg Turnaround Days"
+                },
+                "value": 13.93,
+                "type": "indicator"
+              }
+            ],
+            "layout": {
+              "template": {
+                "data": {
+                  "candlestick": [
+                    {
+                      "decreasing": {
+                        "line": {
+                          "color": "#000033"
+                        }
+                      },
+                      "increasing": {
+                        "line": {
+                          "color": "#000032"
+                        }
+                      },
+                      "type": "candlestick"
+                    }
+                  ],
+                  "contourcarpet": [
+                    {
+                      "colorscale": [
+                        [
+                          0.0,
+                          "#000011"
+                        ],
+                        [
+                          0.1111111111111111,
+                          "#000012"
+                        ],
+                        [
+                          0.2222222222222222,
+                          "#000013"
+                        ],
+                        [
+                          0.3333333333333333,
+                          "#000014"
+                        ],
+                        [
+                          0.4444444444444444,
+                          "#000015"
+                        ],
+                        [
+                          0.5555555555555556,
+                          "#000016"
+                        ],
+                        [
+                          0.6666666666666666,
+                          "#000017"
+                        ],
+                        [
+                          0.7777777777777778,
+                          "#000018"
+                        ],
+                        [
+                          0.8888888888888888,
+                          "#000019"
+                        ],
+                        [
+                          1.0,
+                          "#000020"
+                        ]
+                      ],
+                      "type": "contourcarpet"
+                    }
+                  ],
+                  "contour": [
+                    {
+                      "colorscale": [
+                        [
+                          0.0,
+                          "#000011"
+                        ],
+                        [
+                          0.1111111111111111,
+                          "#000012"
+                        ],
+                        [
+                          0.2222222222222222,
+                          "#000013"
+                        ],
+                        [
+                          0.3333333333333333,
+                          "#000014"
+                        ],
+                        [
+                          0.4444444444444444,
+                          "#000015"
+                        ],
+                        [
+                          0.5555555555555556,
+                          "#000016"
+                        ],
+                        [
+                          0.6666666666666666,
+                          "#000017"
+                        ],
+                        [
+                          0.7777777777777778,
+                          "#000018"
+                        ],
+                        [
+                          0.8888888888888888,
+                          "#000019"
+                        ],
+                        [
+                          1.0,
+                          "#000020"
+                        ]
+                      ],
+                      "type": "contour"
+                    }
+                  ],
+                  "heatmap": [
+                    {
+                      "colorscale": [
+                        [
+                          0.0,
+                          "#000011"
+                        ],
+                        [
+                          0.1111111111111111,
+                          "#000012"
+                        ],
+                        [
+                          0.2222222222222222,
+                          "#000013"
+                        ],
+                        [
+                          0.3333333333333333,
+                          "#000014"
+                        ],
+                        [
+                          0.4444444444444444,
+                          "#000015"
+                        ],
+                        [
+                          0.5555555555555556,
+                          "#000016"
+                        ],
+                        [
+                          0.6666666666666666,
+                          "#000017"
+                        ],
+                        [
+                          0.7777777777777778,
+                          "#000018"
+                        ],
+                        [
+                          0.8888888888888888,
+                          "#000019"
+                        ],
+                        [
+                          1.0,
+                          "#000020"
+                        ]
+                      ],
+                      "type": "heatmap"
+                    }
+                  ],
+                  "histogram2d": [
+                    {
+                      "colorscale": [
+                        [
+                          0.0,
+                          "#000011"
+                        ],
+                        [
+                          0.1111111111111111,
+                          "#000012"
+                        ],
+                        [
+                          0.2222222222222222,
+                          "#000013"
+                        ],
+                        [
+                          0.3333333333333333,
+                          "#000014"
+                        ],
+                        [
+                          0.4444444444444444,
+                          "#000015"
+                        ],
+                        [
+                          0.5555555555555556,
+                          "#000016"
+                        ],
+                        [
+                          0.6666666666666666,
+                          "#000017"
+                        ],
+                        [
+                          0.7777777777777778,
+                          "#000018"
+                        ],
+                        [
+                          0.8888888888888888,
+                          "#000019"
+                        ],
+                        [
+                          1.0,
+                          "#000020"
+                        ]
+                      ],
+                      "type": "histogram2d"
+                    }
+                  ],
+                  "icicle": [
+                    {
+                      "textfont": {
+                        "color": "white"
+                      },
+                      "type": "icicle"
+                    }
+                  ],
+                  "sankey": [
+                    {
+                      "textfont": {
+                        "color": "#000036"
+                      },
+                      "type": "sankey"
+                    }
+                  ],
+                  "scatter": [
+                    {
+                      "marker": {
+                        "line": {
+                          "width": 0
+                        }
+                      },
+                      "type": "scatter"
+                    }
+                  ],
+                  "table": [
+                    {
+                      "cells": {
+                        "fill": {
+                          "color": "#000038"
+                        },
+                        "font": {
+                          "color": "#000037"
+                        },
+                        "line": {
+                          "color": "#000039"
+                        }
+                      },
+                      "header": {
+                        "fill": {
+                          "color": "#000040"
+                        },
+                        "font": {
+                          "color": "#000036"
+                        },
+                        "line": {
+                          "color": "#000039"
+                        }
+                      },
+                      "type": "table"
+                    }
+                  ],
+                  "waterfall": [
+                    {
+                      "connector": {
+                        "line": {
+                          "color": "#000036",
+                          "width": 2
+                        }
+                      },
+                      "decreasing": {
+                        "marker": {
+                          "color": "#000033"
+                        }
+                      },
+                      "increasing": {
+                        "marker": {
+                          "color": "#000032"
+                        }
+                      },
+                      "totals": {
+                        "marker": {
+                          "color": "#000034"
+                        }
+                      },
+                      "type": "waterfall"
+                    }
+                  ]
+                },
+                "layout": {
+                  "coloraxis": {
+                    "colorscale": [
+                      [
+                        0.0,
+                        "#000011"
+                      ],
+                      [
+                        0.1111111111111111,
+                        "#000012"
+                      ],
+                      [
+                        0.2222222222222222,
+                        "#000013"
+                      ],
+                      [
+                        0.3333333333333333,
+                        "#000014"
+                      ],
+                      [
+                        0.4444444444444444,
+                        "#000015"
+                      ],
+                      [
+                        0.5555555555555556,
+                        "#000016"
+                      ],
+                      [
+                        0.6666666666666666,
+                        "#000017"
+                      ],
+                      [
+                        0.7777777777777778,
+                        "#000018"
+                      ],
+                      [
+                        0.8888888888888888,
+                        "#000019"
+                      ],
+                      [
+                        1.0,
+                        "#000020"
+                      ]
+                    ]
+                  },
+                  "colorscale": {
+                    "diverging": [
+                      [
+                        0.0,
+                        "#000021"
+                      ],
+                      [
+                        0.1111111111111111,
+                        "#000022"
+                      ],
+                      [
+                        0.2222222222222222,
+                        "#000023"
+                      ],
+                      [
+                        0.3333333333333333,
+                        "#000024"
+                      ],
+                      [
+                        0.4444444444444444,
+                        "#000025"
+                      ],
+                      [
+                        0.5555555555555556,
+                        "#000026"
+                      ],
+                      [
+                        0.6666666666666666,
+                        "#000027"
+                      ],
+                      [
+                        0.7777777777777778,
+                        "#000028"
+                      ],
+                      [
+                        0.8888888888888888,
+                        "#000029"
+                      ],
+                      [
+                        1.0,
+                        "#000030"
+                      ]
+                    ],
+                    "sequential": [
+                      [
+                        0.0,
+                        "#000011"
+                      ],
+                      [
+                        0.1111111111111111,
+                        "#000012"
+                      ],
+                      [
+                        0.2222222222222222,
+                        "#000013"
+                      ],
+                      [
+                        0.3333333333333333,
+                        "#000014"
+                      ],
+                      [
+                        0.4444444444444444,
+                        "#000015"
+                      ],
+                      [
+                        0.5555555555555556,
+                        "#000016"
+                      ],
+                      [
+                        0.6666666666666666,
+                        "#000017"
+                      ],
+                      [
+                        0.7777777777777778,
+                        "#000018"
+                      ],
+                      [
+                        0.8888888888888888,
+                        "#000019"
+                      ],
+                      [
+                        1.0,
+                        "#000020"
+                      ]
+                    ],
+                    "sequentialminus": [
+                      [
+                        0.0,
+                        "#000011"
+                      ],
+                      [
+                        0.1111111111111111,
+                        "#000012"
+                      ],
+                      [
+                        0.2222222222222222,
+                        "#000013"
+                      ],
+                      [
+                        0.3333333333333333,
+                        "#000014"
+                      ],
+                      [
+                        0.4444444444444444,
+                        "#000015"
+                      ],
+                      [
+                        0.5555555555555556,
+                        "#000016"
+                      ],
+                      [
+                        0.6666666666666666,
+                        "#000017"
+                      ],
+                      [
+                        0.7777777777777778,
+                        "#000018"
+                      ],
+                      [
+                        0.8888888888888888,
+                        "#000019"
+                      ],
+                      [
+                        1.0,
+                        "#000020"
+                      ]
+                    ]
+                  },
+                  "colorway": [
+                    "#000001",
+                    "#000002",
+                    "#000003",
+                    "#000004",
+                    "#000005",
+                    "#000006",
+                    "#000007",
+                    "#000008",
+                    "#000009",
+                    "#000010"
+                  ]
+                }
+              },
+              "meta": {
+                "result_hash": "aa56bbc43b9bf1d9",
+                "sql_sub_question": "q1"
+              },
+              "margin": {
+                "l": 16,
+                "r": 16,
+                "t": 56,
+                "b": 24
+              },
+              "font": {
+                "family": "Inter, 'Segoe UI', system-ui, -apple-system, sans-serif",
+                "size": 13
+              },
+              "title": {
+                "font": {
+                  "size": 15
+                },
+                "x": 0.01,
+                "xanchor": "left"
+              },
+              "height": 460,
+              "paper_bgcolor": "rgba(0,0,0,0)",
+              "plot_bgcolor": "rgba(0,0,0,0)",
+              "colorway": [
+                "#2563eb",
+                "#10b981",
+                "#f59e0b",
+                "#8b5cf6",
+                "#ef4444",
+                "#06b6d4",
+                "#ec4899",
+                "#84cc16",
+                "#f97316"
+              ],
+              "xaxis": {
+                "showgrid": false,
+                "zeroline": false,
+                "automargin": true
+              },
+              "yaxis": {
+                "showgrid": true,
+                "gridcolor": "rgba(128,128,128,0.18)",
+                "zeroline": false,
+                "automargin": true
+              }
+            }
+          }
+        ],
+        "insight": {
+          "composer_version": "insight-composer-v2.1.0",
+          "analysis_type": "scalar",
+          "title": "Avg Turnaround Days",
+          "focus": "Avg Turnaround Days",
+          "key_finding": {
+            "text": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+            "refs": []
+          },
+          "insight": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+          "executive_summary": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+          "detailed_analysis": [
+            {
+              "text": "The metric is a single aggregate; no range or dispersion is visible.",
+              "refs": []
+            },
+            {
+              "text": "All cases are aggregated into one average, so the spread cannot be assessed.",
+              "refs": []
+            },
+            {
+              "text": "The average is 13.93 days, which is 16.07 days below the SLA.",
+              "refs": []
+            }
+          ],
+          "business_impact": [
+            {
+              "text": "Operating at 13.93 days keeps the unit well within the 30‑day SLA, reducing the risk of SLA breaches.",
+              "refs": []
+            },
+            {
+              "text": "The 16.07‑day cushion allows flexibility for handling peak workloads without compromising service levels.",
+              "refs": []
+            }
+          ],
+          "reasoning_steps": [
+            "Question interpreted as: a single aggregate value of `Avg Turnaround Days`.",
+            "Metric definition: Avg Turnaround Days = ROUND(AVG(CASE WHEN Case Status = 'CLOSED' THEN datediff(Closed Date (CaseHistory), Received Date) END), 2).",
+            "Direction: Avg Turnaround Days is treated as lower is better because it measures elapsed time, backlog or adverse outcomes.",
+            "Population: no row filter was applied — the full table was aggregated.",
+            "Completeness: the query returned 1 row(s), equal to its LIMIT of 1; groups beyond the limit are not included.",
+            "Verification: every number on this card is traced to the Evidence tab; AI-written sentences containing numbers that cannot be traced are removed before display.",
+            "2 AI-written sentence(s) were removed because they contained numbers not present in the evidence."
+          ],
+          "reasoning": "Question interpreted as: a single aggregate value of `Avg Turnaround Days`. Metric definition: Avg Turnaround Days = ROUND(AVG(CASE WHEN Case Status = 'CLOSED' THEN datediff(Closed Date (CaseHistory), Received Date) END), 2). Direction: Avg Turnaround Days is treated as lower is better because it measures elapsed time, backlog or adverse outcomes. Population: no row filter was applied — the full table was aggregated. Completeness: the query returned 1 row(s), equal to its LIMIT of 1; groups beyond the limit are not included. Verification: every number on this card is traced to the Evidence tab; AI-written sentences containing numbers that cannot be traced are removed before display. 2 AI-written sentence(s) were removed because they contained numbers not present in the evidence.",
+          "evidence": [
+            {
+              "id": "F1",
+              "label": "Avg Turnaround Days",
+              "display": "13.93 days",
+              "source": "Result column 'Avg Turnaround Days'",
+              "value": 13.93
+            },
+            {
+              "id": "F2",
+              "label": "Configured SLA",
+              "display": "30 days",
+              "source": "Application configuration (SLA_DAYS)",
+              "value": 30
+            },
+            {
+              "id": "F3",
+              "label": "Avg Turnaround Days vs SLA",
+              "display": "-16.07 days",
+              "source": "Derived: value − SLA",
+              "value": -16.07
+            },
+            {
+              "id": "F4",
+              "label": "Distance of Avg Turnaround Days from SLA",
+              "display": "16.07 days",
+              "source": "Derived: |value − SLA|",
+              "value": 16.07
+            }
+          ],
+          "supporting_metrics": [
+            {
+              "label": "Avg Turnaround Days",
+              "value": "13.93 days",
+              "raw_value": 13.93,
+              "unit": "",
+              "source_columns": [],
+              "evidence": "F1 · Result column 'Avg Turnaround Days'",
+              "evidence_id": "F1"
+            },
+            {
+              "label": "Avg Turnaround Days vs SLA",
+              "value": "-16.07 days",
+              "raw_value": -16.07,
+              "unit": "",
+              "source_columns": [],
+              "evidence": "F3 · Derived: value − SLA",
+              "evidence_id": "F3"
+            }
+          ],
+          "recommended_actions": [
+            {
+              "priority": "Immediate",
+              "action": "Monitor TAT trends weekly to ensure the 13.93‑day average remains stable",
+              "owner": "Operations Analytics Team",
+              "timeframe": "Weekly",
+              "success_measure": "Maintain Avg Turnaround Days ≤ 13.93 days",
+              "evidence_ids": [
+                "F1"
+              ],
+              "evidence": ""
+            },
+            {
+              "priority": "Strategic",
+              "action": "Benchmark against industry peers to validate the 16.07‑day advantage",
+              "owner": "Strategy Lead",
+              "timeframe": "Quarterly",
+              "success_measure": "Maintain distance from SLA ≥ 16.07 days",
+              "evidence_ids": [
+                "F4"
+              ],
+              "evidence": ""
+            },
+            {
+              "priority": "Monitor",
+              "action": "Allocate additional resources during identified peak periods to sustain performance",
+              "owner": "Resource Planning",
+              "timeframe": "As needed",
+              "success_measure": "Keep Avg Turnaround Days ≤ 13.93 days during peaks",
+              "evidence_ids": [
+                "F1"
+              ],
+              "evidence": ""
+            }
+          ],
+          "actions": [
+            {
+              "priority": "Immediate",
+              "action": "Monitor TAT trends weekly to ensure the 13.93‑day average remains stable",
+              "owner": "Operations Analytics Team",
+              "timeframe": "Weekly",
+              "success_measure": "Maintain Avg Turnaround Days ≤ 13.93 days",
+              "evidence_ids": [
+                "F1"
+              ],
+              "evidence": ""
+            },
+            {
+              "priority": "Strategic",
+              "action": "Benchmark against industry peers to validate the 16.07‑day advantage",
+              "owner": "Strategy Lead",
+              "timeframe": "Quarterly",
+              "success_measure": "Maintain distance from SLA ≥ 16.07 days",
+              "evidence_ids": [
+                "F4"
+              ],
+              "evidence": ""
+            },
+            {
+              "priority": "Monitor",
+              "action": "Allocate additional resources during identified peak periods to sustain performance",
+              "owner": "Resource Planning",
+              "timeframe": "As needed",
+              "success_measure": "Keep Avg Turnaround Days ≤ 13.93 days during peaks",
+              "evidence_ids": [
+                "F1"
+              ],
+              "evidence": ""
+            }
+          ],
+          "strategic_improvements": [
+            "Track Avg Turnaround Days as a monthly series so changes can be judged against a baseline."
+          ],
+          "data_caveats": [
+            "The query returned 1 rows, equal to its LIMIT of 1; lower-ranked groups may be excluded, so medians and shares describe only the returned rows."
+          ],
+          "evidence_chart": null,
+          "metric": {
+            "column": "Avg Turnaround Days",
+            "kind": "duration",
+            "polarity": "lower",
+            "unit": " days"
+          },
+          "narrative_source": "ai_verified",
+          "narrative_sections_from_ai": {
+            "key_finding": true,
+            "detailed_analysis": true,
+            "business_impact": true,
+            "recommended_actions": true
+          },
+          "risk_level": "Low",
+          "impact": "Operational",
+          "grounded": true,
+          "_dropped_claims": [
+            "Because only one unit is reported, there is no runner‑up margin to compare.  [unsupported causal claim]",
+            "Conduct root‑cause analysis on any cases that approach the 30‑day SLA to prevent breaches  [untraceable number: 25]"
+          ],
+          "_allowed_numbers": [
+            [
+              1.0,
+              0
+            ],
+            [
+              2.0,
+              0
+            ],
+            [
+              13.93,
+              2
+            ],
+            [
+              16.07,
+              2
+            ],
+            [
+              30.0,
+              0
+            ]
+          ],
+          "question": "Which operational unit has the best TAT performance?",
+          "_sql": "-- q1: Which operational unit has the best TAT performance?\nSELECT `Current Unit Name` AS `Current Unit Name`, ROUND(AVG(CASE WHEN `Case Status` = 'CLOSED' THEN datediff(`Closed Date (CaseHistory)`, `Received Date`) END), 2) AS `Avg Turnaround Days` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Current Unit Name` ORDER BY `Avg Turnaround Days` ASC, `Current Unit Name` ASC LIMIT 1",
+          "_result_hash": "aa56bbc43b9bf1d9",
+          "questions": [
+            {
+              "composer_version": "insight-composer-v2.1.0",
+              "analysis_type": "scalar",
+              "title": "Avg Turnaround Days",
+              "focus": "Avg Turnaround Days",
+              "key_finding": {
+                "text": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+                "refs": []
+              },
+              "insight": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+              "executive_summary": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+              "detailed_analysis": [
+                {
+                  "text": "The metric is a single aggregate; no range or dispersion is visible.",
+                  "refs": []
+                },
+                {
+                  "text": "All cases are aggregated into one average, so the spread cannot be assessed.",
+                  "refs": []
+                },
+                {
+                  "text": "The average is 13.93 days, which is 16.07 days below the SLA.",
+                  "refs": []
+                }
+              ],
+              "business_impact": [
+                {
+                  "text": "Operating at 13.93 days keeps the unit well within the 30‑day SLA, reducing the risk of SLA breaches.",
+                  "refs": []
+                },
+                {
+                  "text": "The 16.07‑day cushion allows flexibility for handling peak workloads without compromising service levels.",
+                  "refs": []
+                }
+              ],
+              "reasoning_steps": [
+                "Question interpreted as: a single aggregate value of `Avg Turnaround Days`.",
+                "Metric definition: Avg Turnaround Days = ROUND(AVG(CASE WHEN Case Status = 'CLOSED' THEN datediff(Closed Date (CaseHistory), Received Date) END), 2).",
+                "Direction: Avg Turnaround Days is treated as lower is better because it measures elapsed time, backlog or adverse outcomes.",
+                "Population: no row filter was applied — the full table was aggregated.",
+                "Completeness: the query returned 1 row(s), equal to its LIMIT of 1; groups beyond the limit are not included.",
+                "Verification: every number on this card is traced to the Evidence tab; AI-written sentences containing numbers that cannot be traced are removed before display.",
+                "2 AI-written sentence(s) were removed because they contained numbers not present in the evidence."
+              ],
+              "reasoning": "Question interpreted as: a single aggregate value of `Avg Turnaround Days`. Metric definition: Avg Turnaround Days = ROUND(AVG(CASE WHEN Case Status = 'CLOSED' THEN datediff(Closed Date (CaseHistory), Received Date) END), 2). Direction: Avg Turnaround Days is treated as lower is better because it measures elapsed time, backlog or adverse outcomes. Population: no row filter was applied — the full table was aggregated. Completeness: the query returned 1 row(s), equal to its LIMIT of 1; groups beyond the limit are not included. Verification: every number on this card is traced to the Evidence tab; AI-written sentences containing numbers that cannot be traced are removed before display. 2 AI-written sentence(s) were removed because they contained numbers not present in the evidence.",
+              "evidence": [
+                {
+                  "id": "F1",
+                  "label": "Avg Turnaround Days",
+                  "display": "13.93 days",
+                  "source": "Result column 'Avg Turnaround Days'",
+                  "value": 13.93
+                },
+                {
+                  "id": "F2",
+                  "label": "Configured SLA",
+                  "display": "30 days",
+                  "source": "Application configuration (SLA_DAYS)",
+                  "value": 30
+                },
+                {
+                  "id": "F3",
+                  "label": "Avg Turnaround Days vs SLA",
+                  "display": "-16.07 days",
+                  "source": "Derived: value − SLA",
+                  "value": -16.07
+                },
+                {
+                  "id": "F4",
+                  "label": "Distance of Avg Turnaround Days from SLA",
+                  "display": "16.07 days",
+                  "source": "Derived: |value − SLA|",
+                  "value": 16.07
+                }
+              ],
+              "supporting_metrics": [
+                {
+                  "label": "Avg Turnaround Days",
+                  "value": "13.93 days",
+                  "raw_value": 13.93,
+                  "unit": "",
+                  "source_columns": [],
+                  "evidence": "F1 · Result column 'Avg Turnaround Days'",
+                  "evidence_id": "F1"
+                },
+                {
+                  "label": "Avg Turnaround Days vs SLA",
+                  "value": "-16.07 days",
+                  "raw_value": -16.07,
+                  "unit": "",
+                  "source_columns": [],
+                  "evidence": "F3 · Derived: value − SLA",
+                  "evidence_id": "F3"
+                }
+              ],
+              "recommended_actions": [
+                {
+                  "priority": "Immediate",
+                  "action": "Monitor TAT trends weekly to ensure the 13.93‑day average remains stable",
+                  "owner": "Operations Analytics Team",
+                  "timeframe": "Weekly",
+                  "success_measure": "Maintain Avg Turnaround Days ≤ 13.93 days",
+                  "evidence_ids": [
+                    "F1"
+                  ],
+                  "evidence": ""
+                },
+                {
+                  "priority": "Strategic",
+                  "action": "Benchmark against industry peers to validate the 16.07‑day advantage",
+                  "owner": "Strategy Lead",
+                  "timeframe": "Quarterly",
+                  "success_measure": "Maintain distance from SLA ≥ 16.07 days",
+                  "evidence_ids": [
+                    "F4"
+                  ],
+                  "evidence": ""
+                },
+                {
+                  "priority": "Monitor",
+                  "action": "Allocate additional resources during identified peak periods to sustain performance",
+                  "owner": "Resource Planning",
+                  "timeframe": "As needed",
+                  "success_measure": "Keep Avg Turnaround Days ≤ 13.93 days during peaks",
+                  "evidence_ids": [
+                    "F1"
+                  ],
+                  "evidence": ""
+                }
+              ],
+              "actions": [
+                {
+                  "priority": "Immediate",
+                  "action": "Monitor TAT trends weekly to ensure the 13.93‑day average remains stable",
+                  "owner": "Operations Analytics Team",
+                  "timeframe": "Weekly",
+                  "success_measure": "Maintain Avg Turnaround Days ≤ 13.93 days",
+                  "evidence_ids": [
+                    "F1"
+                  ],
+                  "evidence": ""
+                },
+                {
+                  "priority": "Strategic",
+                  "action": "Benchmark against industry peers to validate the 16.07‑day advantage",
+                  "owner": "Strategy Lead",
+                  "timeframe": "Quarterly",
+                  "success_measure": "Maintain distance from SLA ≥ 16.07 days",
+                  "evidence_ids": [
+                    "F4"
+                  ],
+                  "evidence": ""
+                },
+                {
+                  "priority": "Monitor",
+                  "action": "Allocate additional resources during identified peak periods to sustain performance",
+                  "owner": "Resource Planning",
+                  "timeframe": "As needed",
+                  "success_measure": "Keep Avg Turnaround Days ≤ 13.93 days during peaks",
+                  "evidence_ids": [
+                    "F1"
+                  ],
+                  "evidence": ""
+                }
+              ],
+              "strategic_improvements": [
+                "Track Avg Turnaround Days as a monthly series so changes can be judged against a baseline."
+              ],
+              "data_caveats": [
+                "The query returned 1 rows, equal to its LIMIT of 1; lower-ranked groups may be excluded, so medians and shares describe only the returned rows."
+              ],
+              "evidence_chart": null,
+              "metric": {
+                "column": "Avg Turnaround Days",
+                "kind": "duration",
+                "polarity": "lower",
+                "unit": " days"
+              },
+              "narrative_source": "ai_verified",
+              "narrative_sections_from_ai": {
+                "key_finding": true,
+                "detailed_analysis": true,
+                "business_impact": true,
+                "recommended_actions": true
+              },
+              "risk_level": "Low",
+              "impact": "Operational",
+              "grounded": true,
+              "_dropped_claims": [
+                "Because only one unit is reported, there is no runner‑up margin to compare.  [unsupported causal claim]",
+                "Conduct root‑cause analysis on any cases that approach the 30‑day SLA to prevent breaches  [untraceable number: 25]"
+              ],
+              "_allowed_numbers": [
+                [
+                  1.0,
+                  0
+                ],
+                [
+                  2.0,
+                  0
+                ],
+                [
+                  13.93,
+                  2
+                ],
+                [
+                  16.07,
+                  2
+                ],
+                [
+                  30.0,
+                  0
+                ]
+              ],
+              "question": "Which operational unit has the best TAT performance?",
+              "_sql": "SELECT `Current Unit Name` AS `Current Unit Name`, ROUND(AVG(CASE WHEN `Case Status` = 'CLOSED' THEN datediff(`Closed Date (CaseHistory)`, `Received Date`) END), 2) AS `Avg Turnaround Days` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Current Unit Name` ORDER BY `Avg Turnaround Days` ASC, `Current Unit Name` ASC LIMIT 1",
+              "_result_hash": "aa56bbc43b9bf1d9"
+            }
+          ]
+        },
+        "meta": {
+          "plan_status": "SUPPORTED",
+          "question_count": 1,
+          "validation": {
+            "verdict": "PASS",
+            "unanswered_ids": [],
+            "charts_reconciled": true,
+            "dropped_numeric_claims": 2
+          },
+          "defects": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2216 @@
+{
+ "version": 1,
+ "updated_at": "2026-10-23T13:53:14+00:00",
+ "entries": {
+  "50a205afe00f46db0049eda8422262532502f788681d3943ee9377eb2421ad34": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T08:54:38+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which operational unit has the best TAT performance?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Current Unit Name"
+      ],
+      "metrics": [
+       "avg_turnaround_days"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     }
+    ]
+   }
+  },
+  "1e22d0b0ac92cff76106a3d39f1c0a134b5d91983caadfe0fd7f1cbde3a2b967": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T08:54:40+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Current Unit Name`, AVG(CASE WHEN upper(trim(`Case Status`)) = 'CLOSED' THEN datediff(`Closed Date (CaseHistory)`, `Received Date`) END) AS `Avg Turnaround Days` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Current Unit Name` ORDER BY `Avg Turnaround Days` ASC, `Current Unit Name` ASC LIMIT 1",
+    "intent": "Returns the operational unit with the lowest average turnaround days for closed appeals.",
+    "referenced_columns": [
+     "Case Status",
+     "Closed Date (CaseHistory)",
+     "Received Date",
+     "Current Unit Name"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Current Unit Name"
+    ],
+    "measures": [
+     {
+      "column": "Avg Turnaround Days",
+      "type": "numeric",
+      "numerator": null,
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "79eb9bde3af7672de5222e9ab8b07491b8d76a37ef62236c7b5d1d0c98419277": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T08:54:53+00:00",
+   "value": {
+    "key_finding": "Avg Turnaround Days is 13.93 days, 16.07 days inside the 30‑day SLA, making it the best performing unit.",
+    "detailed_analysis": [
+     "The metric is a single aggregate; no range or dispersion is visible. [F1]",
+     "All cases are combined, so the spread cannot be assessed. [F1]",
+     "The unit's performance is 13.93 days, which is 16.07 days better than the SLA. [F1, F3]",
+     "No outliers are reported in the current data set. [F1]"
+    ],
+    "business_impact": [
+     "Operating 13.93 days on average keeps the unit well below the 30‑day SLA, reducing SLA breach risk. [F1, F2, F3]",
+     "The 16.07‑day cushion allows flexibility for peak periods. [F4]"
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Set up a monthly TAT trend report.",
+      "owner": "Operations Lead",
+      "timeframe": "Monthly",
+      "success_measure": "Maintain Avg Turnaround Days ≤ 13.93 days.",
+      "evidence_ids": [
+       "F1"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Implement real‑time alerts for cases approaching the SLA threshold.",
+      "owner": "Compliance Manager",
+      "timeframe": "Quarterly",
+      "success_measure": "Zero cases exceeding 25 days.",
+      "evidence_ids": [
+       "F2",
+       "F3"
+      ]
+     },
+     {
+      "priority": "Strategic",
+      "action": "Conduct process improvement workshops to sustain the 16.07‑day margin.",
+      "owner": "Process Improvement Team",
+      "timeframe": "6 months",
+      "success_measure": "Increase margin to ≥ 18 days.",
+      "evidence_ids": [
+       "F4"
+      ]
+     },
+     {
+      "priority": "Monitor",
+      "action": "Benchmark against peer units to confirm best practice.",
+      "owner": "Analytics Team",
+      "timeframe": "3 months",
+      "success_measure": "Identify at least 2 units with similar or better TAT.",
+      "evidence_ids": [
+       "F1"
+      ]
+     }
+    ]
+   }
+  },
+  "04956bf9ddf188acf4659b1f2b7a19a5477878a5c4a423c4cbc0417f1fa64f1e": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T08:56:16+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which plan sponsor has high appeal volume but also a high overturn rate?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Plan Sponsor Name"
+      ],
+      "metrics": [
+       "total_appeals",
+       "overturn_rate"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     }
+    ]
+   }
+  },
+  "101ed91ce759f0847123184b1e664dc9ee2d7c7520a6646ce222e488fc39c044": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T08:56:19+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Plan Sponsor Name`, COUNT(`Case Identifier`) AS `Total Appeals`, SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) AS `Closed Cases`, SUM(CASE WHEN `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) AS `Overturned Cases`, ROUND(CASE WHEN SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) = 0 THEN NULL ELSE CAST(SUM(CASE WHEN `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) AS DOUBLE) / CAST(SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) AS DOUBLE) END * 100, 2) AS `Overturn Rate` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Plan Sponsor Name` ORDER BY `Total Appeals` DESC, `Overturn Rate` DESC, `Plan Sponsor Name` ASC LIMIT 10",
+    "intent": "Returns the top 10 plan sponsors ranked by total appeal volume and overturn rate.",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Case Identifier",
+     "Case Status",
+     "Determination"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Plan Sponsor Name"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": "Total Cases"
+     },
+     {
+      "column": "Overturn Rate",
+      "type": "percentage",
+      "numerator": "Overturned Cases",
+      "denominator": "Closed Cases"
+     }
+    ],
+    "expected_row_scale": "one row per plan sponsor",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "635243ad1efe93c5a91afb7b9e3466ce07852c807b9d388bc7636b3da21dc018": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T08:56:50+00:00",
+   "value": {
+    "key_finding": "No overturn rate data provided for any sponsor, so cannot determine which sponsor has high appeal volume and high overturn rate [F1]",
+    "detailed_analysis": [
+     "Total Appeals range from 955 (DELTA AIR LINES, INC.) to 1,066 (COSTCO WHOLESALE CORPORATION), a spread of 111 [F8]",
+     "The median sponsor has 1,004 appeals, placing COSTCO WHOLESALE CORPORATION 62 (6.2%) above the median [F6, F7]",
+     "COSTCO WHOLESALE CORPORATION is 1.12× the lowest appeal volume and 46 higher than the next sponsor, STARBUCKS CORPORATION [F9, F13]",
+     "Variation across sponsors is low, with a coefficient of variation of 3.1% and all values within the IQR fences of 946 to 1,050, indicating a tight cluster [F14, F15, F16]"
+    ],
+    "business_impact": [
+     "With 10.5% of the 8,000 closed cases, COSTCO WHOLESALE CORPORATION accounts for 843 closed cases, contributing significantly to overall workload [F18, F19, F17]",
+     "The strong positive Spearman correlation of 0.88 between closed cases and Total Appeals suggests that sponsors with higher appeal volumes also handle more closed cases, potentially stressing capacity [F21]"
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Conduct a process audit for COSTCO WHOLESALE CORPORATION to identify appeal drivers [F2, F4, F6]",
+      "owner": "Compliance Lead",
+      "timeframe": "within 30 days",
+      "success_measure": "reduce appeal volume to within 5% of median (≤1,029)",
+      "evidence_ids": [
+       "F2",
+       "F4",
+       "F6"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Implement targeted training for staff handling appeals at sponsors with appeal volumes above median [F2, F3, F4]",
+      "owner": "Operations Manager",
+      "timeframe": "within 60 days",
+      "success_measure": "lower appeal volume by 10% for sponsors above median",
+      "evidence_ids": [
+       "F2",
+       "F3",
+       "F4"
+      ]
+     },
+     {
+      "priority": "Monitor",
+      "action": "Track appeal volume trends quarterly to detect outliers beyond IQR fences [F15, F16, F8]",
+      "owner": "Analytics Team",
+      "timeframe": "quarterly",
+      "success_measure": "maintain all sponsors within IQR fences (946-1,050)",
+      "evidence_ids": [
+       "F15",
+       "F16",
+       "F8"
+      ]
+     }
+    ]
+   }
+  },
+  "a6dcdb07f2c835fa01c72a8f16ad5abbb5fcffd59d7dd197bfd20fd0fc9a980d": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T08:57:52+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Plan Sponsor Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Filter by sponsor identified in q1 result",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "cb32745f2a44106d71a11e24afa32a6f2703fdc327d3b64d3a41fb8cf8857fdc": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T08:57:54+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Plan Sponsor Name`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Plan Sponsor Name` ORDER BY `Total Appeals` DESC, `Plan Sponsor Name` ASC LIMIT 1",
+    "intent": "Returns the sponsor with the highest number of appeals",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Case Identifier"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Plan Sponsor Name"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per sponsor",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "8a994eac2e1254302671a6f4c2052ecc040555623c24e6c86aa7b161e9046c73": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T08:57:59+00:00",
+   "value": {
+    "key_finding": "The dataset reports a total of 1,066 appeals, for COSTCO WHOLESALE CORPORATION as the highest number of appeals. [F1]",
+    "detailed_analysis": [
+     "The metric is a single aggregate count, so there is no range or spread to analyze [F1]",
+     "Because only one value is available, we cannot assess runner‑up margins or dispersion [F1]",
+     "The lack of granularity prevents evaluation of how many sponsors exceed or fall below the median [F1]",
+     "Without sponsor‑level data, any trend dynamics remain unknown [F1]"
+    ],
+    "business_impact": [
+     "Operational decisions cannot be informed by this aggregate alone, as it masks which teams or periods drive the appeals [F1]",
+     "Capacity planning and SLA monitoring require sponsor‑specific figures to identify bottlenecks [F1]"
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Obtain sponsor‑level appeal counts to identify the highest appellant [F1]",
+      "owner": "Analytics Team",
+      "timeframe": "Within 2 weeks",
+      "success_measure": "Availability of sponsor‑level appeal data with at least 90% coverage",
+      "evidence_ids": [
+       "F1"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Segment appeals by sponsor to calculate median and identify outliers [F1]",
+      "owner": "Data Governance",
+      "timeframe": "Within 1 month",
+      "success_measure": "Median appeal count computed and outlier sponsors flagged",
+      "evidence_ids": [
+       "F1"
+      ]
+     },
+     {
+      "priority": "Strategic",
+      "action": "Implement a dashboard that displays sponsor‑level appeal volumes and trends [F1]",
+      "owner": "Product Owner",
+      "timeframe": "Within 3 months",
+      "success_measure": "Dashboard live with sponsor‑level metrics",
+      "evidence_ids": [
+       "F1"
+      ]
+     }
+    ]
+   }
+  },
+  "f811dbc27fe38ac5824857780e4af0bbf12f956e421c6592cf38f72dacab442c": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T08:58:25+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Determination`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Plan Sponsor Name` = 'COSTCO WHOLESALE CORPORATION' GROUP BY `Determination` ORDER BY `Total Appeals` DESC",
+    "intent": "Returns the count of appeals by determination for the specified sponsor.",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Determination"
+    ],
+    "filters_applied": {
+     "Plan Sponsor Name": "COSTCO WHOLESALE CORPORATION"
+    },
+    "grain": "none",
+    "dimensions": [
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per determination",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "dba587587472473f5afc2f5b05e81ab333b12eb14342d874e44b7237c8579a82": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T08:58:49+00:00",
+   "value": {
+    "key_finding": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5). It also represents 41.2% of all appeals, contributing to the 85.7% share of the top three determinations.",
+    "detailed_analysis": [
+     "The Total Appeals span from 152 for PARTIALLY OVERTURNED to 439 for UPHELD, a spread of 287.",
+     "The runner‑up, OVERTURNED, sits at 252, 187 below UPHELD, illustrating a clear gap.",
+     "Variation across determinations is high, with a coefficient of variation of 39.8% and no outliers beyond the IQR fences of 65 to 439.",
+     "The ratio of UPHELD to PARTIALLY OVERTURNED appeals is 2.89×, underscoring the dominance of the top determination."
+    ],
+    "business_impact": [
+     "Because UPHELD accounts for 41.2% of all appeals, any inefficiency in this determination could disproportionately affect overall processing times.",
+     "The concentration of 85.7% of appeals in the top three determinations, combined with an HHI of 2,896, signals a high risk of bottlenecks and potential SLA breaches."
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Implement a targeted review process for UPHELD appeals to reduce volume by 10% to 395.",
+      "owner": "Compliance Review Team",
+      "timeframe": "Within 3 months",
+      "success_measure": "Reduce UPHELD Total Appeals to 395",
+      "evidence_ids": [
+       "F11"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Allocate additional staffing to UPHELD to maintain its share of total appeals at ≤45%.",
+      "owner": "Operations Manager",
+      "timeframe": "Within 6 months",
+      "success_measure": "Maintain UPHELD share of total appeals at ≤45%",
+      "evidence_ids": [
+       "F18"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Conduct a process audit on OVERTURNED to identify opportunities to reduce its 252 appeals by 15% to 214.",
+      "owner": "Process Improvement Lead",
+      "timeframe": "Within 4 months",
+      "success_measure": "Reduce OVERTURNED Total Appeals to 214",
+      "evidence_ids": [
+       "F12"
+      ]
+     },
+     {
+      "priority": "Monitor",
+      "action": "Track concentration metrics quarterly to ensure HHI remains below 3,000.",
+      "owner": "Analytics Team",
+      "timeframe": "Quarterly",
+      "success_measure": "HHI ≤3,000",
+      "evidence_ids": [
+       "F20"
+      ]
+     }
+    ]
+   }
+  },
+  "dfe7fadadcc7156b072961f60d3f631d6655c44a04549783e404f10cdde121a6": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T08:59:08+00:00",
+   "value": {
+    "headline": "The dataset does not identify the sponsor with the highest number of appeals, but UPHELD accounts for 439 appeals—84.8% above the median determination.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "status": "ANSWERED",
+      "answer": "The dataset reports a total of 1,066 appeals, for COSTCO WHOLESALE CORPORATION as the highest number of appeals.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined",
+      "status": "ANSWERED",
+      "answer": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5). It also represents 41.2% of all appeals, contributing to the 85.7% share of the top three determinations.",
+      "why_not": ""
+     }
+    ],
+    "cross_cutting_note": "Both answers rely on the same dataset, with q1 noting a lack of sponsor detail and q2 providing determination specifics for UPHELD."
+   }
+  },
+  "3cfebbde615f933457ca407a0d30136aa2faec42115b380e573820d1fc344c3c": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T08:59:19+00:00",
+   "value": {
+    "verdict": "PASS",
+    "defects": [],
+    "unanswered_ids": []
+   }
+  },
+  "724a9b6ed9707c1de967bf32896df3ec73d20cf255f13886228d9e87c9829132": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:02:16+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which provider has the highest appeal volume?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "what is its overturn rate?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "metric",
+      "grain": "none",
+      "dimensions": [],
+      "metrics": [
+       "overturn_rate"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Use Provider_ID from ranking result",
+      "expects_chart": false,
+      "chart_hint": "none"
+     }
+    ]
+   }
+  },
+  "fd34b91cea1a032296f41588c04d3c8728cf19b10b68b7099ee0d63a50244b83": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:02:29+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_ID`, COUNT(`Case Identifier`) AS `total_appeals` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Provider_ID` ORDER BY `total_appeals` DESC LIMIT 1",
+    "intent": "Returns the provider with the highest total appeal volume.",
+    "referenced_columns": [
+     "Case Identifier",
+     "Provider_ID"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_ID"
+    ],
+    "measures": [
+     {
+      "column": "total_appeals",
+      "type": "count",
+      "numerator": "Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per provider",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "f008824bcf0ec8c2a323755eabd166a03695254b53eb18b1b9291d87c1a5dd0e": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T09:03:12+00:00",
+   "value": {
+    "headline": "The data indicates 1,028 total appeals, but provider and overturn rate details are not available.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Which provider has the highest appeal volume?",
+      "status": "ANSWERED",
+      "answer": "The data indicates a total of 1,028 appeals; provider with highest volume is not specified in the data.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "what is its overturn rate?",
+      "status": "NOT_ANSWERED",
+      "answer": "",
+      "why_not": "The AI service could not generate a query for this question. Please retry."
+     }
+    ],
+    "cross_cutting_note": ""
+   }
+  },
+  "6af6ff2e34394daabe677f7db0701eb1c01788810a25eada514414ae008469a7": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:03:17+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "The data indicates a total of 1,028 appeals; provider with highest volume is not specified in the data.",
+      "explanation": "Answer does not provide the requested provider with highest appeal volume."
+     },
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "The AI service could not generate a query for this question. Please retry.",
+      "explanation": "Answer does not provide the overturn rate."
+     }
+    ],
+    "unanswered_ids": [
+     "q1",
+     "q2"
+    ]
+   }
+  },
+  "05f7f0153f3aabe6dc621b21f29fc8e8ac1140a1f4f7cb73377c28e4318f5ee3": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:04:43+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which provider has the highest appeal volume and what is its overturn rate?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_Name"
+      ],
+      "metrics": [
+       "total_appeals",
+       "overturn_rate"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": false,
+      "chart_hint": "none"
+     }
+    ]
+   }
+  },
+  "b4616f56d659df40590e94c932a1f245a29441b4c02904d6dc2934afe5f5b875": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:04:46+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_Name`, COUNT(`Case Identifier`) AS `Total Appeals`, SUM(CASE WHEN `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) AS `Overturn Count`, SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) AS `Closed Cases`, CASE WHEN SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) = 0 THEN NULL ELSE ROUND(SUM(CASE WHEN `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) * 100.0 / SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END), 2) END AS `Overturn Rate` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Provider_Name` ORDER BY `Total Appeals` DESC, `Provider_Name` ASC LIMIT 1",
+    "intent": "Returns the provider with the highest appeal volume and its overturn rate.",
+    "referenced_columns": [
+     "Provider_Name",
+     "Case Identifier",
+     "Case Status",
+     "Determination"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_Name"
+    ],
+    "measures": [
+     {
+      "column": "Overturn Rate",
+      "type": "percentage",
+      "numerator": "Overturn Count",
+      "denominator": "Closed Cases"
+     }
+    ],
+    "expected_row_scale": "one row",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "e6637978581209f7c9070b9989a18f0ac4b69e7acde56816d4e17a3d6fc53552": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:09:05+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me their determination breakdown",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Provider_Name",
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Use providers from top 10 ranking",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "dac41c2439b7643538bfcbe216fc14063238925cd62d369039a67549a34571b7": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:09:07+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_Name`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Provider_Name` ORDER BY `Total Appeals` DESC, `Provider_Name` ASC LIMIT 10",
+    "intent": "Top 10 providers by total appeal count",
+    "referenced_columns": [
+     "Provider_Name",
+     "Case Identifier"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_Name"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": ""
+     }
+    ],
+    "expected_row_scale": "one row per provider",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "2d107d4a57b197e47537bbd22e576c23aacc6b8e1f9de69e7c77610a5875c66b": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T09:09:58+00:00",
+   "value": {
+    "headline": "Prime Diagnostics tops the list with 1,028 appeals, but determination breakdown data is unavailable.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count",
+      "status": "ANSWERED",
+      "answer": "Prime Diagnostics has the highest Total Appeals at 1,028, 20.5 (2.0%) above the median provider (1,007.5).",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me their determination breakdown",
+      "status": "NOT_ANSWERED",
+      "answer": "",
+      "why_not": "The AI service could not generate a query for this question. Please retry."
+     }
+    ],
+    "cross_cutting_note": ""
+   }
+  },
+  "ef008050907f0f2847d229f4462d2d7fba6c7c6d8b36dd450aed2a8804e9644d": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:10:00+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "Prime Diagnostics has the highest Total Appeals at 1,028, 20.5 (2.0%) above the median provider (1,007.5).",
+      "explanation": "Answer does not provide top 10 providers."
+     },
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "The AI service could not generate a query for this question. Please retry.",
+      "explanation": "No determination breakdown provided."
+     },
+     {
+      "check": "question_drift",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "Prime Diagnostics has the highest Total Appeals at 1,028, 20.5 (2.0%) above the median provider (1,007.5).",
+      "explanation": "Answer focuses on a single provider instead of top 10."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q1",
+      "offending_text": "Prime Diagnostics has the highest Total Appeals at 1,028, 20.5 (2.0%) above the median provider (1,007.5).",
+      "explanation": "Comparison claim not supported by provided data."
+     }
+    ],
+    "unanswered_ids": [
+     "q1",
+     "q2"
+    ]
+   }
+  },
+  "d65bed7119115f3d3e674ddb4512dc63e76e9f4cbf745fec23d4edc5ada8d584": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:14:20+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID",
+       "Provider_Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID",
+       "Provider_Name",
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Depends on ranking result to get top 10 providers.",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "ab75375994394174a3326518ec3d050a51d62d0c26540f9494d4fb8f8933e5a3": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:14:45+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_ID`, `Provider_Name`, COUNT(`Case Identifier`) AS total_appeals, SUM(CASE WHEN `Determination`='OVERTURNED' THEN 1 ELSE 0 END) AS overturned_count, SUM(CASE WHEN `Determination`='PARTIALLY OVERTURNED' THEN 1 ELSE 0 END) AS partially_overturned_count, SUM(CASE WHEN `Determination`='UPHELD' THEN 1 ELSE 0 END) AS upheld_count FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Provider_ID`, `Provider_Name` ORDER BY total_appeals DESC, `Provider_ID` ASC LIMIT 10",
+    "intent": "Returns the top 10 providers by total appeal count along with counts of each determination type",
+    "referenced_columns": [
+     "Provider_ID",
+     "Provider_Name",
+     "Case Identifier",
+     "Determination"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_ID",
+     "Provider_Name"
+    ],
+    "measures": [
+     {
+      "column": "total_appeals",
+      "type": "count",
+      "numerator": null,
+      "denominator": null
+     },
+     {
+      "column": "overturned_count",
+      "type": "count",
+      "numerator": null,
+      "denominator": null
+     },
+     {
+      "column": "partially_overturned_count",
+      "type": "count",
+      "numerator": null,
+      "denominator": null
+     },
+     {
+      "column": "upheld_count",
+      "type": "count",
+      "numerator": null,
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per provider",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "3951d1c5a728d3591eb5f5204439ffb492035b533aeaf044a9f956b3d5866f30": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T09:15:11+00:00",
+   "value": {
+    "key_finding": "PRV1005 · Prime Diagnostics leads the top 10 with 1,028 total appeals, 20.5 above the median of 1,007.5, representing 10.3% of all appeals [F11, F6, F23]. This accounts for a sizable share of the 10,000 total appeals [F22, F23].",
+    "detailed_analysis": [
+     "The appeal counts span from 942 at PRV1009 to 1,028 at PRV1005, a spread of 86 [F8].",
+     "The runner‑up, PRV1003, is only 10 appeals behind PRV1005, indicating a tight top tier [F13].",
+     "Variation is low, with a coefficient of variation of 2.4% and IQR fences between 961 and 1,049 [F14, F15, F16].",
+     "The negative Spearman correlation of –0.24 suggests no clear link between appeal volume and overturns [F21].",
+     "The top three providers together contribute 30.6% of all appeals, while the overall concentration (HHI 1,001) remains modest [F24, F25]."
+    ],
+    "business_impact": [
+     "PRV1005’s 10.3% share of total appeals means any process change there can shift overall workload [F23].",
+     "With 237 overturns (10.0% of 2,381), the provider also represents a significant portion of adjudication effort [F18, F19, F17].",
+     "Maintaining balanced appeal volumes across the top ten is essential to avoid SLA breaches and ensure member experience [F24]."
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Review and refine the appeal adjudication workflow for PRV1005 to reduce overturns",
+      "owner": "Compliance Lead",
+      "timeframe": "30 days",
+      "success_measure": "Decrease overturned_count from 237 to 213 (10% reduction)",
+      "evidence_ids": [
+       "F18",
+       "F19"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Implement a monitoring dashboard for the top three providers to track appeal volume trends",
+      "owner": "Ops Manager",
+      "timeframe": "60 days",
+      "success_measure": "Keep combined share of total appeals below 35%",
+      "evidence_ids": [
+       "F24"
+      ]
+     },
+     {
+      "priority": "Strategic",
+      "action": "Conduct a root‑cause analysis of the negative correlation between appeals and overturns to identify process inefficiencies",
+      "owner": "Data Analyst",
+      "timeframe": "45 days",
+      "success_measure": "Identify at least one factor with correlation >0.5",
+      "evidence_ids": [
+       "F21"
+      ]
+     }
+    ]
+   }
+  },
+  "c212e86a70911a9490306215872a57174c47b04c4fd9670cb73ac235707869c3": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T09:15:43+00:00",
+   "value": {
+    "headline": "Prime Diagnostics tops the list with 1,028 appeals, accounting for 10.3% of all 10,000 appeals.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "ANSWERED",
+      "answer": "The top provider is PRV1005 Prime Diagnostics with 1,028 appeals, 20.5 above the median of 1,007.5. The next highest is PRV1003 City Care Clinic with 1,018 appeals, followed by PRV1009 Neuro Specialty Center with 942 appeals. The median total appeals across the 10 combinations is 1,007.5 and the spread is 86.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "NOT_ANSWERED",
+      "answer": "",
+      "why_not": "The AI service could not generate a query for this question. Please retry."
+     }
+    ],
+    "cross_cutting_note": ""
+   }
+  },
+  "88a9ca0021480b132de4259eee1bbee8de96a8ff9d22e20667267c50a2c85d56": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:15:46+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "The top provider is PRV1005 Prime Diagnostics with 1,028 appeals, 20.5 above the median of 1,007.5. The next highest is PRV1003 City Care Clinic with 1,018 appeals, followed by PRV1009 Neuro Specialty Center with 942 appeals. The median total appeals across the 10 combinations is 1,007.5 and the spread is 86.",
+      "explanation": "Does not list the top 10 providers nor provide determination breakdown."
+     },
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "The AI service could not generate a query for this question. Please retry.",
+      "explanation": "No answer provided for the second sub-question."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q1",
+      "offending_text": "The top provider is PRV1005 Prime Diagnostics with 1,028 appeals, 20.5 above the median of 1,007.5.",
+      "explanation": "Claims a comparison to a median that is not supported by supplied data."
+     }
+    ],
+    "unanswered_ids": [
+     "q1",
+     "q2"
+    ]
+   }
+  },
+  "45345eec8657a4dc6380f3fdec477db44895c1dce48f5e948b6cf9c7e2b2e8d6": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:17:41+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "How many appeals were received each month?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "trend",
+      "grain": "month",
+      "dimensions": [],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {
+       "Received Date": {
+        "from": "2024-01-01",
+        "to": "2026-07-13"
+       }
+      },
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "line"
+     }
+    ]
+   }
+  },
+  "1b5063bd53fce93d9838b3a8293c5d8543c380972016952da6f0211a487ee043": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:17:58+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT date_format(`Received Date`, 'yyyy-MM') AS Month, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Received Date` >= '2024-01-01' AND `Received Date` <= '2026-07-13' GROUP BY Month ORDER BY Month ASC",
+    "intent": "Monthly count of appeals received",
+    "referenced_columns": [
+     "Case Identifier",
+     "Received Date"
+    ],
+    "filters_applied": {
+     "Received Date": {
+      "from": "2024-01-01",
+      "to": "2026-07-13"
+     }
+    },
+    "grain": "month",
+    "dimensions": [],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per month",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "bc773989d53dde0904dcc2336a76112ae65e67678c004d6b9ec37fa10df0f705": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:22:06+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "What is the trend in overturn rates over the last 12 months?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "trend",
+      "grain": "month",
+      "dimensions": [],
+      "metrics": [
+       "overturn_rate"
+      ],
+      "filters": {
+       "Closed Date (CaseHistory)": {
+        "from": "2025-08-01",
+        "to": "2026-07-13"
+       }
+      },
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "line"
+     }
+    ]
+   }
+  },
+  "02f65ad379bbfa3e2bcfe6935a40c379145a6e93a1926e1e2a14632d7aee5308": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:22:19+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT date_format(`Closed Date (CaseHistory)`, 'yyyy-MM') AS `Month`, SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) AS `Closed Cases`, SUM(CASE WHEN `Case Status` = 'CLOSED' AND `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) AS `Overturned Cases`, ROUND(CASE WHEN SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) = 0 THEN NULL ELSE CAST(SUM(CASE WHEN `Case Status` = 'CLOSED' AND `Determination` IN ('OVERTURNED','PARTIALLY OVERTURNED') THEN 1 ELSE 0 END) AS DOUBLE) / CAST(SUM(CASE WHEN `Case Status` = 'CLOSED' THEN 1 ELSE 0 END) AS DOUBLE) * 100 END, 2) AS `Overturn Rate` FROM `my_catalog`.`default`.`appeals_final` WHERE `Closed Date (CaseHistory)` >= '2025-08-01' AND `Closed Date (CaseHistory)` <= '2026-07-13' GROUP BY date_format(`Closed Date (CaseHistory)`, 'yyyy-MM') ORDER BY date_format(`Closed Date (CaseHistory)`, 'yyyy-MM') ASC",
+    "intent": "Returns monthly overturn rate trend for closed cases between 2025-08-01 and 2026-07-13.",
+    "referenced_columns": [
+     "Closed Date (CaseHistory)",
+     "Case Status",
+     "Determination"
+    ],
+    "filters_applied": {
+     "Closed Date (CaseHistory)": {
+      "from": "2025-08-01",
+      "to": "2026-07-13"
+     }
+    },
+    "grain": "month",
+    "dimensions": [],
+    "measures": [
+     {
+      "column": "Overturn Rate",
+      "type": "percentage",
+      "numerator": "Overturned Cases",
+      "denominator": "Closed Cases"
+     }
+    ],
+    "expected_row_scale": "one row per month",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "142c9e25b0a66983d2006474af394e20111cd48f4e5f3973ff9b9882a6950629": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:26:30+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "WITH avg_tat AS (\n  SELECT\n    `Provider_ID`,\n    `Provider_Name`,\n    date_format(`Closed Date (CaseHistory)`, 'yyyy-MM') AS `Month`,\n    AVG(datediff(`Closed Date (CaseHistory)`, `Received Date`)) AS `Avg_TAT`\n  FROM `my_catalog`.`default`.`appeals_final`\n  WHERE `Case Status` = 'CLOSED'\n    AND `Closed Date (CaseHistory)` >= '2026-05-01'\n    AND `Closed Date (CaseHistory)` <= '2026-07-31'\n  GROUP BY `Provider_ID`, `Provider_Name`, `Month`\n),\nmonth1 AS (\n  SELECT `Provider_ID`, `Provider_Name`, `Avg_TAT` AS `Avg_TAT_Month1`\n  FROM avg_tat\n  WHERE `Month` = '2026-05'\n),\nmonth3 AS (\n  SELECT `Provider_ID`, `Avg_TAT` AS `Avg_TAT_Month3`\n  FROM avg_tat\n  WHERE `Month` = '2026-07'\n)\nSELECT\n  m1.`Provider_ID`,\n  m1.`Provider_Name`,\n  m1.`Avg_TAT_Month1`,\n  m3.`Avg_TAT_Month3`,\n  (m3.`Avg_TAT_Month3` - m1.`Avg_TAT_Month1`) AS `TAT_Increase`\nFROM month1 m1\nJOIN month3 m3 ON m1.`Provider_ID` = m3.`Provider_ID`\nWHERE m3.`Avg_TAT_Month3` > m1.`Avg_TAT_Month1`\nORDER BY `TAT_Increase` DESC, `Provider_ID`",
+    "intent": "Returns providers whose average turnaround time increased from May to July 2026.",
+    "referenced_columns": [
+     "Provider_ID",
+     "Provider_Name",
+     "Case Status",
+     "Closed Date (CaseHistory)",
+     "Received Date"
+    ],
+    "filters_applied": {
+     "Closed Date (CaseHistory)": {
+      "from": "2026-05-01",
+      "to": "2026-07-31"
+     }
+    },
+    "grain": "month",
+    "dimensions": [
+     "Provider_ID",
+     "Provider_Name"
+    ],
+    "measures": [
+     {
+      "column": "Avg_TAT_Month1",
+      "type": "numeric",
+      "numerator": null,
+      "denominator": null
+     },
+     {
+      "column": "Avg_TAT_Month3",
+      "type": "numeric",
+      "numerator": null,
+      "denominator": null
+     },
+     {
+      "column": "TAT_Increase",
+      "type": "numeric",
+      "numerator": null,
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "",
+    "is_aggregate": false,
+    "self_check": {},
+    "repair_applied": ""
+   }
+  },
+  "e003e80c4eeac476d802b2fad527f4ad1efa18047c4f523491ab17e2f9eaef33": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:28:36+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which providers have shown an increase in TAT during the last 3 months?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "comparison",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID"
+      ],
+      "metrics": [
+       "avg_turnaround_days"
+      ],
+      "filters": {
+       "Closed Date (CaseHistory)": {
+        "from": "2026-04-23",
+        "to": "2026-10-23"
+       }
+      },
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     }
+    ]
+   }
+  },
+  "eb89dbfcad0aaf59ab06db7d3f68e7793ce6a4e90210b9fc4d7e262f0bdeb764": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:37:54+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_ID`, `Provider_Name`, `Determination`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Provider_ID` IN ('PRV1005','PRV1003','PRV1001','PRV1002','PRV1008','PRV1006','PRV1004','PRV1010','PRV1007','PRV1009') GROUP BY `Provider_ID`, `Provider_Name`, `Determination` ORDER BY `Total Appeals` DESC, `Provider_ID` ASC LIMIT 25",
+    "intent": "Return the top 25 provider–determination combinations by appeal count from the top 10 providers.",
+    "referenced_columns": [
+     "Provider_ID",
+     "Provider_Name",
+     "Determination",
+     "Case Identifier"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_ID",
+     "Provider_Name",
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per provider per determination (limited to 25 rows)",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "05cc493712f421965b9f5301b8d3b147d5d22150bdae79e08fe98813d936478a": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T09:38:33+00:00",
+   "value": {
+    "headline": "Top providers by appeal count and determination breakdown are summarized below.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "ANSWERED",
+      "answer": "PRV1005 · Prime Diagnostics leads the top 10 with 1,028 total appeals, 20.5 above the median of 1,007.5, representing 10.3% of all appeals.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "ANSWERED",
+      "answer": "PRV1006 · Hope Pharmacy has the highest Total Appeals at 446, 203 (83.5%) above the median combination of 243.",
+      "why_not": ""
+     }
+    ],
+    "cross_cutting_note": "Both providers exceed their respective medians by significant margins."
+   }
+  },
+  "d3d3ad44e752d367e2edace4e529b22c5d00130b266bbfc42801cbb852b0b71e": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:38:44+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "PRV1005 · Prime Diagnostics leads the top 10 with 1,028 total appeals, 20.5 above the median of 1,007.5, representing 10.3% of all appeals.",
+      "explanation": "Only one provider is listed instead of the top 10."
+     },
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "PRV1006 · Hope Pharmacy has the highest Total Appeals at 446, 203 (83.5%) above the median combination of 243.",
+      "explanation": "Only one provider is listed instead of a breakdown for the top 10."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q1",
+      "offending_text": "20.5 above the median of 1,007.5",
+      "explanation": "The claim about the median is not supported by provided facts."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q2",
+      "offending_text": "203 (83.5%) above the median combination of 243",
+      "explanation": "The claim about the median is not supported by provided facts."
+     }
+    ],
+    "unanswered_ids": []
+   }
+  },
+  "151371886bdfdf5c1abfb6fd62cda1e8d369e86ee23839919f4debd5d6c5cd2a": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:40:04+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Plan Sponsor Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined?",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {
+       "Plan Sponsor Name": null
+      },
+      "depends_on": "q1",
+      "dependency_note": "Uses sponsor identified in q1",
+      "expects_chart": true,
+      "chart_hint": "pie"
+     }
+    ]
+   }
+  },
+  "181c55b89397b74678fdcfb4c227deb5869b53029e2e792f624135bc8994aed0": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:40:17+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Determination`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Plan Sponsor Name` = 'COSTCO WHOLESALE CORPORATION' GROUP BY `Determination` ORDER BY `Total Appeals` DESC, `Determination` ASC",
+    "intent": "Return the count of appeals by determination for the sponsor COSTCO WHOLESALE CORPORATION",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Determination",
+     "Case Identifier"
+    ],
+    "filters_applied": {
+     "Plan Sponsor Name": "COSTCO WHOLESALE CORPORATION"
+    },
+    "grain": "none",
+    "dimensions": [
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": "Total Appeals"
+     }
+    ],
+    "expected_row_scale": "one row per determination",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "181726f6eb6e7c3cdf39b4983563d090250c51ae45da280c919a080f1dd9d0e3": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T09:40:37+00:00",
+   "value": {
+    "key_finding": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5) and accounts for 41.2% of all appeals.",
+    "detailed_analysis": [
+     "Across 4 determinations, Total Appeals ranges from 152 (PARTIALLY OVERTURNED) to 439 (UPHELD), a spread of 287; the highest is 2.89× the lowest.",
+     "The next-closest determination, OVERTURNED, is at 252, a margin of 187 to UPHELD, showing a clear gap.",
+     "Variation across determinations is high with a coefficient of variation of 39.8% and no determination falls outside the IQR outlier fences (65 to 439).",
+     "The top three determinations together account for 85.7% of all appeals, indicating high concentration."
+    ],
+    "business_impact": [
+     "With 1,066 total appeals, UPHELD’s 41.2% share means a capacity or quality issue in this determination would shift the overall result; the top three determinations hold 85.7% of all appeals."
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Review and streamline the UPHELD determination process to reduce appeal volume.",
+      "owner": "Compliance Lead",
+      "timeframe": "30 days",
+      "success_measure": "Reduce UPHELD Total Appeals to 350 or less",
+      "evidence_ids": [
+       "F11"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Benchmark OVERTURNED and PARTIALLY OVERTURNED determinations to identify best practices for appeal handling.",
+      "owner": "Operations Analyst",
+      "timeframe": "60 days",
+      "success_measure": "Increase OVERTURNED Total Appeals to 250 or more",
+      "evidence_ids": [
+       "F12"
+      ]
+     },
+     {
+      "priority": "Strategic",
+      "action": "Implement cross-determination training to balance workload and reduce variability.",
+      "owner": "Training Manager",
+      "timeframe": "90 days",
+      "success_measure": "Decrease coefficient of variation to 30% or less",
+      "evidence_ids": [
+       "F14"
+      ]
+     },
+     {
+      "priority": "Monitor",
+      "action": "Track concentration trend via HHI to ensure balanced appeal distribution.",
+      "owner": "Data Analyst",
+      "timeframe": "Quarterly",
+      "success_measure": "Maintain HHI below 3,000",
+      "evidence_ids": [
+       "F20"
+      ]
+     }
+    ]
+   }
+  },
+  "3df5cadb3c1bc85dfd49826385fd24d9ad2164ee9119257c98dc20bd3ed22eb8": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:40:53+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "question_drift",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5) and accounts for 41.2% of all appeals.",
+      "explanation": "The answer does not address how the appeals are determined, but instead provides numeric totals."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q2",
+      "offending_text": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5) and accounts for 41.2% of all appeals.",
+      "explanation": "The claim about UPHELD's appeal counts and percentages is not supported by provided facts."
+     }
+    ],
+    "unanswered_ids": [
+     "q2"
+    ]
+   }
+  },
+  "4c37349a13b44a19bd8359922b4e9c37ad07843462b4aaca6acb14cf0dd4b7af": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:42:05+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID",
+       "Provider_Name",
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "0f59502e5a0a68ff9c4b6fe345fb6bab156bb32969879bb5687d8ef46880c20b": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:43:46+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID",
+       "Provider_Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Provider_ID",
+       "Provider_Name",
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Use the top 10 providers from ranking result.",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "3b9dcb04be40eaa3a803b2fe4c6bc8095017adb26f77224154a19d33aa4a6bb4": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:44:05+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_ID`,`Provider_Name`,`Determination`,COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Provider_ID` IN ('PRV1005','PRV1003','PRV1001','PRV1002','PRV1008','PRV1006','PRV1004','PRV1010','PRV1007','PRV1009') GROUP BY `Provider_ID`,`Provider_Name`,`Determination` ORDER BY `Provider_ID`,`Determination`",
+    "intent": "Returns the count of appeals per provider and determination for the top 10 providers.",
+    "referenced_columns": [
+     "Provider_ID",
+     "Provider_Name",
+     "Determination",
+     "Case Identifier"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_ID",
+     "Provider_Name",
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Appeals",
+      "denominator": "Total Cases"
+     }
+    ],
+    "expected_row_scale": "one row per provider per determination",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "f60cdacdfa50cca717179bc2cbd84d498719d6db788a4782821d6b2aa8f9d62b": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T09:44:39+00:00",
+   "value": {
+    "headline": "Top 10 providers by appeal count and determination breakdown are summarized below.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "ANSWERED",
+      "answer": "PRV1005 · Prime Diagnostics tops the list with 1,028 appeals, 20.5 above the median of 1,007.5, accounting for 10.3% of all appeals.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "Show me the top 10 providers by appeal count and their determination breakdown.",
+      "status": "ANSWERED",
+      "answer": "PRV1006 · Hope Pharmacy leads with 446 appeals, 224 above the median of 222, representing 100.9% above median.",
+      "why_not": ""
+     }
+    ],
+    "cross_cutting_note": "Both top providers exceed median appeal counts significantly."
+   }
+  },
+  "18b415f399bb307f763672fd1bd1e6f3acf01c2c217d660ecbd96e095e8dafd8": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T09:44:56+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q1",
+      "offending_text": "",
+      "explanation": "Answer does not provide top 10 providers or determination breakdown."
+     },
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "",
+      "explanation": "Answer does not provide determination breakdown for top 10 providers."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q1",
+      "offending_text": "PRV1005 · Prime Diagnostics tops the list with 1,028 appeals, 20.5 above the median of 1,007.5, accounting for 10.3% of all appeals.",
+      "explanation": "Percentage claim not supported by provided data."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q2",
+      "offending_text": "PRV1006 · Hope Pharmacy leads with 446 appeals, 224 above the median of 222, representing 100.9% above median.",
+      "explanation": "Percentage claim not supported by provided data."
+     }
+    ],
+    "unanswered_ids": []
+   }
+  },
+  "8746e130c1be4077d2f45036b570b0b6e3512a17b1adf84e65240e1db8452673": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T09:51:17+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 1,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Show me the top 10 providers by appeal count.",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Provider_Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     }
+    ]
+   }
+  },
+  "3482ea627b2bea67751e93bac877cf49afe6392c306e3f253120f1146fd78462": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T09:51:19+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Provider_Name` AS Provider_Name, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` GROUP BY `Provider_Name` ORDER BY `Total Appeals` DESC, `Provider_Name` ASC LIMIT 10",
+    "intent": "Returns the top 10 providers ranked by total appeal count",
+    "referenced_columns": [
+     "Provider_Name",
+     "Case Identifier"
+    ],
+    "filters_applied": {},
+    "grain": "none",
+    "dimensions": [
+     "Provider_Name"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per provider",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "019f2fda66619b8e3a9335e701f0865a087c3f5231d77f02095a96f8eab2ac50": {
+   "purpose": "insight_narrative",
+   "created_at": "2026-10-23T09:51:37+00:00",
+   "value": {
+    "key_finding": "Prime Diagnostics has the highest Total Appeals at 1,028, 20.5 (2.0%) above the median provider (1,007.5) [F11, F6, F7]. It accounts for 10.3% of all appeals, a significant share of the total 10,000 [F18].",
+    "detailed_analysis": [
+     "Total Appeals span from 942 at Neuro Specialty Center to 1,028 at Prime Diagnostics, a spread of 86 [F10, F11, F8]. The next-closest provider, City Care Clinic, sits at 1,018, only 10 appeals below Prime Diagnostics, indicating a tight top tier [F12, F13]. Variation across providers is low, with a coefficient of variation of 2.4% and most values falling within the IQR fences of 961 to 1,049 [F14, F15, F16]. The top three providers together contribute 30.6% of all appeals, while the overall concentration measured by HHI is 1,001, suggesting moderate market concentration [F19, F20]."
+    ],
+    "business_impact": [
+     "Prime Diagnostics alone represents 10.3% of the total 10,000 appeals, meaning a shift in its performance could materially affect overall workload and SLA exposure [F18, F17]. With the top three providers accounting for 30.6% of appeals, capacity planning must accommodate a concentrated demand that could strain resources if any of these providers experience a surge [F19]."
+    ],
+    "recommended_actions": [
+     {
+      "priority": "Immediate",
+      "action": "Conduct a process audit at Prime Diagnostics to identify root causes of its 20.5 appeal excess over median",
+      "owner": "Compliance Lead",
+      "timeframe": "Short-term",
+      "success_measure": "Prime Diagnostics Total Appeals reduced to ≤1,018, matching the next provider",
+      "evidence_ids": [
+       "F6",
+       "F12"
+      ]
+     },
+     {
+      "priority": "Short-term",
+      "action": "Implement monitoring of appeal counts against IQR fences to flag outliers promptly",
+      "owner": "Analytics Team",
+      "timeframe": "Short-term",
+      "success_measure": "No provider exceeds IQR fences of 961 to 1,049",
+      "evidence_ids": [
+       "F15",
+       "F16"
+      ]
+     },
+     {
+      "priority": "Strategic",
+      "action": "Review workload allocation for the top three providers to ensure capacity buffers for 30.6% share of appeals",
+      "owner": "Operations Manager",
+      "timeframe": "Strategic",
+      "success_measure": "Capacity plan updated to reflect 30.6% share",
+      "evidence_ids": [
+       "F19"
+      ]
+     }
+    ]
+   }
+  },
+  "9edf100c0f677dc9ac70a23976dbe6f5f0eabef0da6c874920564ec427b18df1": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T10:05:38+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Plan Sponsor Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {
+       "Plan Sponsor Name": {
+        "equals": "upstream_results"
+       }
+      },
+      "depends_on": "q1",
+      "dependency_note": "Uses sponsor identified in q1",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "fd04a9d142b47a10df3284781dbfe2ab4e11d85a2fad082783f217a8965413b9": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T10:05:43+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Determination`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Plan Sponsor Name` = 'COSTCO WHOLESALE CORPORATION' GROUP BY `Determination` ORDER BY `Determination`",
+    "intent": "Returns the total number of appeals per determination for the specified sponsor.",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Determination",
+     "Case Identifier"
+    ],
+    "filters_applied": {
+     "Plan Sponsor Name": {
+      "equals": "COSTCO WHOLESALE CORPORATION"
+     }
+    },
+    "grain": "none",
+    "dimensions": [
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per determination",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "10625a9cc1bb7bdbc1a5707278879464b754e2086d56f12b5a66bc75c27c79bd": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T10:06:03+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "completeness",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "UPHELD has the highest Total Appeals at 439, 201.5 (84.8%) above the median determination (237.5). It also represents 41.2% of all appeals, contributing to the 85.7% share of the top three determinations.",
+      "explanation": "The answer does not provide a breakdown of determinations as requested."
+     }
+    ],
+    "unanswered_ids": [
+     "q2"
+    ]
+   }
+  },
+  "4849d173c91844d05427439891a8dc3fe6252264204f186b4490cc46816a13a9": {
+   "purpose": "synthesis",
+   "created_at": "2026-10-23T10:13:38+00:00",
+   "value": {
+    "headline": "COSTCO WHOLESALE CORPORATION has the highest number of appeals, and UPHELD leads the determination breakdown with 439 appeals.",
+    "answers": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "status": "ANSWERED",
+      "answer": "COSTCO WHOLESALE CORPORATION has the highest number of appeals, with a total of 1,066.",
+      "why_not": ""
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined",
+      "status": "ANSWERED",
+      "answer": "UPHELD has the highest Total Appeals at 439, which is 201.5 (84.8%) above the median determination of 237.5. It accounts for 41.2% of all appeals and contributes to 85.7% share of the top three determinations.",
+      "why_not": ""
+     }
+    ],
+    "cross_cutting_note": "The sponsor with the most appeals is COSTCO WHOLESALE CORPORATION, while the determination breakdown shows UPHELD leading with 439 appeals."
+   }
+  },
+  "58ceca7cce410f6cc950e3092a1305887b335ce97449b151ea45366ff78b8a64": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T10:13:41+00:00",
+   "value": {
+    "verdict": "PASS",
+    "defects": [],
+    "unanswered_ids": []
+   }
+  },
+  "b1beefcaeb1752546289b608f89b7d3d7d87fe6b1ff5e02c98e61430823092bd": {
+   "purpose": "planner",
+   "created_at": "2026-10-23T10:28:14+00:00",
+   "value": {
+    "overall_status": "SUPPORTED",
+    "question_count": 2,
+    "sub_questions": [
+     {
+      "id": "q1",
+      "question_text": "Which sponsor has the highest number of appeals",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "ranking",
+      "grain": "none",
+      "dimensions": [
+       "Plan Sponsor Name"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": null,
+      "dependency_note": "",
+      "expects_chart": true,
+      "chart_hint": "bar"
+     },
+     {
+      "id": "q2",
+      "question_text": "how are those appeals being determined",
+      "answerable": true,
+      "status": "SUPPORTED",
+      "reason": "",
+      "analysis_type": "breakdown",
+      "grain": "none",
+      "dimensions": [
+       "Determination"
+      ],
+      "metrics": [
+       "total_appeals"
+      ],
+      "filters": {},
+      "depends_on": "q1",
+      "dependency_note": "Use sponsor name from q1's result",
+      "expects_chart": true,
+      "chart_hint": "stacked_bar"
+     }
+    ]
+   }
+  },
+  "6f09c1d9de05fc03b9853018dc64373b8c722d057618dcd13db7b9aafe8633e0": {
+   "purpose": "sql_generation",
+   "created_at": "2026-10-23T10:28:20+00:00",
+   "value": {
+    "answerable": true,
+    "status": "SUPPORTED",
+    "reason": "",
+    "sql": "SELECT `Determination`, COUNT(`Case Identifier`) AS `Total Appeals` FROM `my_catalog`.`default`.`appeals_final` WHERE `Plan Sponsor Name` = 'COSTCO WHOLESALE CORPORATION' GROUP BY `Determination` ORDER BY `Determination`",
+    "intent": "Return the number of appeals per determination for the specified sponsor",
+    "referenced_columns": [
+     "Plan Sponsor Name",
+     "Determination",
+     "Case Identifier"
+    ],
+    "filters_applied": {
+     "Plan Sponsor Name": "COSTCO WHOLESALE CORPORATION"
+    },
+    "grain": "none",
+    "dimensions": [
+     "Determination"
+    ],
+    "measures": [
+     {
+      "column": "Total Appeals",
+      "type": "count",
+      "numerator": "Total Appeals",
+      "denominator": null
+     }
+    ],
+    "expected_row_scale": "one row per determination",
+    "is_aggregate": true,
+    "self_check": {
+     "columns_valid": true,
+     "denominators_valid": true,
+     "division_guarded": true,
+     "shape_matches_intent": true,
+     "order_deterministic": true
+    },
+    "repair_applied": ""
+   }
+  },
+  "bcd55f8d14a398533fd6cdf3bdf0ac6bfa89ebe7b1182bca55291cfa41c20cff": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T10:28:28+00:00",
+   "value": {
+    "verdict": "PASS",
+    "defects": [],
+    "unanswered_ids": []
+   }
+  },
+  "e21133a959d3a359dfb6f4d7e30602ed706418f2ff654ffcd5650cf03da15569": {
+   "purpose": "response_validation",
+   "created_at": "2026-10-23T13:53:14+00:00",
+   "value": {
+    "verdict": "FAIL",
+    "defects": [
+     {
+      "check": "question_drift",
+      "severity": "blocking",
+      "sub_question_id": "q2",
+      "offending_text": "UPHELD has the highest Total Appeals at 439, which is 201.5 (84.8%) above the median determination of 237.5.",
+      "explanation": "The answer discusses UPHELD instead of the sponsor with the highest appeals (COSTCO), thus drifting from the question."
+     },
+     {
+      "check": "unsupported_claim",
+      "severity": "advisory",
+      "sub_question_id": "q2",
+      "offending_text": "UPHELD has the highest Total Appeals at 439, which is 201.5 (84.8%) above the median determination of 237.5. It accounts for 41.2% of all appeals and contributes to 85.7% share of the top three determinations.",
+      "explanation": "The percentages and comparisons are not supported by the supplied facts."
+     }
+    ],
+    "unanswered_ids": []
+   }
+  }
+ }
+}

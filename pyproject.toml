@@ -1,0 +1,40 @@
+[project]
+name = "datatalk-ai"
+version = "1.0.0"
+description = "DataTalk.AI — conversational analytics for Healthcare Appeals & Grievances (Streamlit + Databricks + Groq)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.66.0,<2",
+    "plotly>=7.1.0,<8",
+    "pandas>=3.0.6,<4",
+    "numpy>=2.5.4,<3",
+    "databricks-sql-connector>=4.7.0,<5",
+    "groq>=0.37.1,<1",
+    "pydantic>=2.14,<3",
+    "pydantic-settings>=2.0,<3",
+    "sqlglot>=30.23",
+    "filelock>=3.16",
+    "streamlit-mic-recorder>=0.0.8",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14",
+]
+
+# Application, not an installable library: uv installs dependencies only.
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["data", "docs", "assets"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["agents", "components", "core", "dashboards", "prompts", "anomaly_detection", "speech_utils"]
